@@ -3,6 +3,8 @@
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
+import { useState, useEffect } from "react"
+
 import Header from "./components/Header";
 import Login from './components/Login';
 // import Main from './components/Main'
@@ -12,6 +14,15 @@ import NewGame from "./components/NewGame"
 import Pokedex from "./components/Pokedex"
 
 function App() {
+
+  const [currentUser, setCurrentUser] = useState({}) 
+  
+  useEffect(() => {
+    fetch("http://localhost:3000/users/1")
+      .then(resp=>resp.json())
+      .then(setCurrentUser)
+  })
+
   return (
     <div className="App">
       <Router>
