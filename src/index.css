@@ -11,3 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+nav a {
+  margin: 0px 10px 0px 0px;
+  text-decoration: none;
+}
+
+nav a.active {
+  background-color: aquamarine;
+}
+
+div#pokedex {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+div.dex-card {
+  border: 1px solid black;
+}

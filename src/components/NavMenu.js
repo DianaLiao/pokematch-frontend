@@ -4,7 +4,7 @@ function NavMenu(){
 
   return (
     <nav>
-      <NavLink exact to="/" activeClassName="selected">
+      <NavLink exact to="/">
         Welcome
       </NavLink>
       <NavLink to="/new-game">
@@ -13,7 +13,9 @@ function NavMenu(){
       <NavLink to="/pokedex">
         Pokédex
       </NavLink>
-      <span>Logout</span>
+      <a href="#">
+        Logout
+      </a>
     </nav>
   )
 }
