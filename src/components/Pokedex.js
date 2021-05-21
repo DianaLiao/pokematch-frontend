@@ -1,32 +1,54 @@
-import {useState, useEffect} from "react"
+import {useState, useEffect, useRef} from "react"
 import PokedexCard from "./PokedexCard"
+import PokeInfoModal from "./PokeInfoModal"
 
 
-function Pokedex (){
+function Pokedex ({userMon, appRef}){
 
   const [dexLoaded, setDexLoaded] = useState(false)
-  const [monToRender, setMonToRender] = useState([])
+  const [dexCards, setDexCards] = useState([])
+
+  const [infoOpen, setInfoOpen] = useState(false)
+  const [modalProps, setModalProps] = useState({name:"sup"})
+  const dexEl = useRef(null)
 
   useEffect(() => {
     fetch("http://localhost:3000/pokemons")
       .then(resp => resp.json())
-      .then(filterPokemon)
+      .then(generateDexCards)
   }, [])
 
-  function filterPokemon(pokemonArray){
-    let userMon = [...Array(152).keys()]
+  function generateDexCards(pokemonArray){
+    const userMonIds = userMon.map(mon => mon.pokemonId)
 
-    setMonToRender(pokemonArray.filter(pokemon => userMon.includes(pokemon.api_id)))
+    const displayArray = pokemonArray.map(pokemon => {
+
+      function popUpInfo(){
+        setModalProps(pokemon)
+        toggleModal()
+      }
+
+      if (userMonIds.includes(pokemon.id)) {
+        return <PokedexCard popUpInfo={popUpInfo} key={pokemon.apiId} {...pokemon}/>
+      }
+      else {
+        return <PokedexCard key={pokemon.apiId} frontSprite="../blank_pokeball.png" backSprite="../blank_pokeball.png" name="unknown"/>
+      }
+    })
+
+    setDexCards(displayArray)
     setDexLoaded(true)
   }
 
-  const dexCards = monToRender.map(pokemon => {
-    return <PokedexCard key={pokemon.api_id} {...pokemon}/>
-  })
+  function toggleModal() {
+    setInfoOpen(value => !value)
+  }
+
 
   return (
-    <div id="pokedex">
+    <div id="pokedex" ref={dexEl}>
       {!dexLoaded && <p>Loading Pokédex</p> }
+      <PokeInfoModal infoOpen={infoOpen} toggleModal={toggleModal} dexRef={dexEl} pokemon={modalProps}/>
       {dexCards}
     </div>
   )

@@ -1,13 +1,11 @@
 
 function PokedexCard(props){
 
-  const {api_id, front_sprite, back_sprite, name} = props
-
-  console.log(props)
+  const {apiId, frontSprite, backSprite, name, popUpInfo} = props
 
   return(
-    <div className="dex-card">
-      <img src={front_sprite} alt={`front of ${name}`}/>
+    <div className="dex-card" onClick={popUpInfo}>
+      <img src={frontSprite} alt={`front of ${name}`} height="96"/>
     </div>
   )
 }

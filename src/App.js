@@ -3,7 +3,7 @@
 
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 
 import Header from "./components/Header";
 import Login from './components/Login';
@@ -16,22 +16,28 @@ import Pokedex from "./components/Pokedex"
 function App() {
 
   const [currentUser, setCurrentUser] = useState({}) 
+  const appEl = useRef(null)
   
   useEffect(() => {
     fetch("http://localhost:3000/users/1")
       .then(resp=>resp.json())
-      .then(setCurrentUser)
-  })
+      .then(user => {
+        setCurrentUser(user)
+        console.log(user)
+      })
+  },[])
+
+  
 
   return (
-    <div className="App">
+    <div className="App" ref={appEl}>
       <Router>
         <Header/>
         <NavMenu/>
         <main>
             <Switch>
               <Route exact path="/">
-                <Welcome />
+                <Welcome user={currentUser}/>
               </Route>
               <Route path="/login">
                 <Login />
@@ -40,7 +46,7 @@ function App() {
                 <NewGame />
               </Route>
               <Route path="/pokedex">
-                <Pokedex />
+                <Pokedex userMon={currentUser.userPokemons} appRef={appEl}/>
               </Route>
             </Switch>
         </main>

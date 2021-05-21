@@ -30,3 +30,21 @@ div#pokedex {
 div.dex-card {
   border: 1px solid black;
 }
+
+div.dex-modal{
+  border-style: solid;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  min-width: 150px;
+  position: fixed;
+  top: 0;
+  transition: all 5s ease-in-out;
+}
+
+.capitalize {
+  text-transform: capitalize;
+}
