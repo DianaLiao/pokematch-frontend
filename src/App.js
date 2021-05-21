@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
 
-import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, useHistory, Redirect } from 'react-router-dom'
 
 import { useState, useEffect, useRef } from "react"
 
@@ -23,7 +23,7 @@ function App() {
 
   useEffect(() => {
 
-  },[user])
+  },[currentUser])
 
   function signup(formData){
     const fetchObj = createFetchObj("POST", formData)
@@ -79,16 +79,19 @@ function App() {
       <main>
           <Switch>
             <Route exact path="/">
-              <Welcome user={currentUser}/>
+              {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
+              : <Welcome user={currentUser}/>}
+            </Route>
+            <Route path="/new-game">
+              {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
+              : <NewGame />}
+            </Route>
+            <Route path="/pokedex">
+              {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
+              : <Pokedex userMon={currentUser.userPokemons} appRef={appEl}/>}
             </Route>
             <Route path="/login">
               <Login login={login} signup={signup} errors={errors} setErrors={setErrors}/>
-            </Route>
-            <Route path="/new-game">
-              <NewGame />
-            </Route>
-            <Route path="/pokedex">
-              <Pokedex userMon={currentUser.userPokemons} appRef={appEl}/>
             </Route>
           </Switch>
       </main>
