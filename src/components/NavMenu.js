@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom"
 
-function NavMenu(){
+function NavMenu({user, logout}){
 
   return (
     <nav>
@@ -13,7 +13,7 @@ function NavMenu(){
       <NavLink to="/pokedex">
         Pokédex
       </NavLink>
-      <a href="#">
+      <a onClick={logout} href="#">
         Logout
       </a>
     </nav>

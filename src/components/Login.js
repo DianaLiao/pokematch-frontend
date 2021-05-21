@@ -1,12 +1,16 @@
 import { useState } from "react"
+import { useHistory } from "react-router-dom"
 
-function Login(){
+function Login({login, signup, errors, setErrors}){
 
-  const [formData, setFormData] = useState({})
+  const [formData, setFormData] = useState({name:"", password:"", email:""})
   const [formType, setFormType] = useState("Sign-up")
+
+  const history = useHistory()
 
   function changeFormType(event){
     setFormType(event.target.id)
+    setErrors([])
   }
 
   function handleFormChange(event){
@@ -14,16 +18,25 @@ function Login(){
     const value = event.target.value
 
     setFormData({...formData, [property]:value})
-    console.log(formData)
   }
 
   function handleFormSubmit(event){
     event.preventDefault()
+    if (formType === "Login") {
+      login(formData)
+    }
+    else if (formType === "Sign-up") {
+      signup(formData)
+    }
+
   }
+
+  const errorsList = errors.length > 0 ? <ul>{errors.map(error => <li>{error}</li>)}</ul> : null
 
   return (
     <div className="forms-page">
       <div><span id="Login" onClick={changeFormType}>Login</span><span id="Sign-up" onClick={changeFormType}>Sign-Up</span></div>
+      {errorsList}
       <div className="form-display">
         <form onSubmit={handleFormSubmit}>
           <label for="email">E-mail address:</label>
