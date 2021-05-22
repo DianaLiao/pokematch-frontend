@@ -12,7 +12,7 @@ import Welcome from "./components/Welcome"
 import NavMenu from "./components/NavMenu";
 import NewGame from "./components/NewGame"
 import Pokedex from "./components/Pokedex"
-import { GameProvider } from "./GameContext"
+import { GameProvider } from "./components/GameContext"
 
 function App() {
 
