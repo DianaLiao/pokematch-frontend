@@ -48,3 +48,15 @@ div.dex-modal{
 .capitalize {
   text-transform: capitalize;
 }
+
+div#game-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+div.game-card img {
+  width: 96px;
+  height: 96px;
+  margin: 5px;
+}

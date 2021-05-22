@@ -5,12 +5,14 @@ import { BrowserRouter as Router, Route, Switch, useHistory, Redirect } from 're
 
 import { useState, useEffect, useRef } from "react"
 
+
 import Header from "./components/Header";
 import Login from './components/Login';
 import Welcome from "./components/Welcome"
 import NavMenu from "./components/NavMenu";
 import NewGame from "./components/NewGame"
 import Pokedex from "./components/Pokedex"
+import { GameProvider } from "./GameContext"
 
 function App() {
 
@@ -20,10 +22,6 @@ function App() {
   const history = useHistory()
 
   const serverUrl = "http://localhost:3000"
-
-  useEffect(() => {
-
-  },[currentUser])
 
   function signup(formData){
     const fetchObj = createFetchObj("POST", formData)
@@ -84,7 +82,9 @@ function App() {
             </Route>
             <Route path="/new-game">
               {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
-              : <NewGame />}
+              : <GameProvider>
+                  <NewGame serverUrl={serverUrl}/>
+                </GameProvider>}
             </Route>
             <Route path="/pokedex">
               {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 

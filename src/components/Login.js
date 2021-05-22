@@ -39,13 +39,13 @@ function Login({login, signup, errors, setErrors}){
       {errorsList}
       <div className="form-display">
         <form onSubmit={handleFormSubmit}>
-          <label for="email">E-mail address:</label>
+          <label htmlFor="email">E-mail address:</label>
           <input 
             onChange={handleFormChange} 
             value={formData.email}
             type="text" id="email">
           </input><br/>
-          <label for="password">Password:</label>
+          <label htmlFor="password">Password:</label>
           <input 
             onChange={handleFormChange} 
             value={formData.password}
@@ -53,7 +53,7 @@ function Login({login, signup, errors, setErrors}){
           </input><br/>
           {formType === "Sign-up" && 
             <>
-              <label for="name">Name:</label>
+              <label htmlFor="name">Name:</label>
               <input 
                 onChange={handleFormChange} 
                 value={formData.name}

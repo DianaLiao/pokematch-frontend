@@ -23,13 +23,15 @@ function Pokedex ({userMon, appRef}){
 
     const displayArray = pokemonArray.map(pokemon => {
 
+      const userMonInfo = userMon.find(mon => mon.pokemonId == pokemon.id)
+      
       function popUpInfo(){
-        setModalProps(pokemon)
+        setModalProps({...pokemon, ...userMonInfo})
         toggleModal()
       }
 
       if (userMonIds.includes(pokemon.id)) {
-        return <PokedexCard popUpInfo={popUpInfo} key={pokemon.apiId} {...pokemon}/>
+        return <PokedexCard popUpInfo={popUpInfo} key={pokemon.apiId} {...pokemon} />
       }
       else {
         return <PokedexCard key={pokemon.apiId} frontSprite="../blank_pokeball.png" backSprite="../blank_pokeball.png" name="unknown"/>
