@@ -9,7 +9,7 @@ function GameProvider({children}) {
   const [matchedMon, setMatchedMon] = useState([])
   const [flippedCards, setFlippedCards] = useState([])
 
-  function processFlipCard({cardId, apiId}){
+  function processFlipCard({cardId, apiId, frontSprite, id, name}){
 
     setFlippedCards([...flippedCards, {cardId, apiId}])
 
@@ -18,10 +18,11 @@ function GameProvider({children}) {
     if (flippedCards.length === 2) {
       isMatched = compareCards()
       if (!isMatched) {
-        setTimeout(setFlippedCards([]), 1000)
+        setTimeout(setFlippedCards([]), 500)
       }
       else {
         console.log("match!")
+        setMatchedMon([...matchedMon, {apiId, id, frontSprite, name}])
       }
     }
 

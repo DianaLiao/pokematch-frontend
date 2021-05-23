@@ -3,24 +3,16 @@ import {GameContext} from "../GameContext"
 
 function GameCard(props){
 
-  // const [isFlipped, setFlipped] = useState(false)
   const {cardId, frontSprite, name, apiId} = props
 
+  const {processFlipCard, flippedCards} = useContext(GameContext)
+  const flippedIds = flippedCards.length > 0 ? flippedCards.map(card => card.cardId) : []
+  
   const cardBackImg = "./sqkrmic.jpg"
 
-  const {processFlipCard, flippedCards} = useContext(GameContext)
-
-  const flippedIds = flippedCards.length > 0 ? flippedCards.map(card => card.cardId) : []
-
-  // function determineFlip(){
-  //   if (flippedCards.includes(cardId)){
-  //     return true
-  //   }
-  //   else {return false}
-  // }
-
   function flipCard(){
-    processFlipCard({cardId, apiId})
+    console.log(props)
+    processFlipCard(props)
   }
 
   return (

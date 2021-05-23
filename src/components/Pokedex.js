@@ -31,7 +31,7 @@ function Pokedex ({userMon, appRef}){
       }
 
       if (userMonIds.includes(pokemon.id)) {
-        return <PokedexCard popUpInfo={popUpInfo} key={pokemon.apiId} {...pokemon} />
+        return <PokedexCard popUpInfo={popUpInfo} key={pokemon.apiId} {...pokemon} {...userMonInfo}/>
       }
       else {
         return <PokedexCard key={pokemon.apiId} frontSprite="../blank_pokeball.png" backSprite="../blank_pokeball.png" name="unknown"/>
