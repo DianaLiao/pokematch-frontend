@@ -8,24 +8,39 @@ function GameProvider({children}) {
 
   const [matchedMon, setMatchedMon] = useState([])
   const [flippedCards, setFlippedCards] = useState([])
+  const [lastClicked, setLastClicked] = useState({})
 
-  function processFlipCard({cardId, apiId, frontSprite, id, name}){
 
-    setFlippedCards([...flippedCards, {cardId, apiId}])
+  function processFlipCard(){
+    // console.log(lastClicked)
+    const {cardId, apiId, frontSprite, id, name, cardRef} = lastClicked
 
-    let isMatched = false
-    
+    if (flippedCards[0] && cardId === flippedCards[0].cardId){
+      alert("please choose a different card")
+    }
+    else{
+      setFlippedCards([...flippedCards, {cardId, apiId, cardRef, name}])
+    }
+  }
+
+  function analyzeCards(){
+    const {cardId, apiId, frontSprite, id, name} = lastClicked
     if (flippedCards.length === 2) {
-      isMatched = compareCards()
+      const isMatched = compareCards()
       if (!isMatched) {
-        setTimeout(setFlippedCards([]), 500)
+        // console.log("no match!")
+        setFlippedCards([])
       }
       else {
-        console.log("match!")
+        // console.log("match!")
+        flippedCards.forEach(mon => {
+          const card = mon.cardRef
+          card.className = "hidden game-card"
+        })
         setMatchedMon([...matchedMon, {apiId, id, frontSprite, name}])
+        setFlippedCards([])
       }
     }
-
   }
 
   function compareCards(){
@@ -41,7 +56,10 @@ function GameProvider({children}) {
   const value = {
     flippedCards,
     matchedMon,
-    processFlipCard
+    processFlipCard, 
+    analyzeCards,
+    lastClicked,
+    setLastClicked
   }
   
   return (
@@ -51,5 +69,5 @@ function GameProvider({children}) {
   )
 }
 
-// export
+
 export { GameContext, GameProvider }

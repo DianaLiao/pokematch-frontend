@@ -11,7 +11,6 @@ function NewGame({serverUrl}){
 
   const fetchUrl = `${serverUrl}/pokemons/game`
   const [gameMon, setGameMon] = useState([]) 
-  const [firstFlippedId, setFirstFlippedId] = useState(0)
 
   const numCards = 12
 
@@ -23,15 +22,6 @@ function NewGame({serverUrl}){
   const gameCards = gameMon.map(mon => {
     return <GameCard {...mon} key={mon.cardId} />
   })
-
-  function checkMatch(newId){
-    if (firstFlippedId == newId) {
-      console.log("match!")
-    }
-    else {
-      console.log("oh well")
-    }
-  }
 
   return (
     <div className="game">

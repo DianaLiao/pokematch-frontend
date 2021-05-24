@@ -4,17 +4,14 @@ import {useState} from "react"
 function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
 
   const {name, email, companionId, userPokemons, numberOfCaughtMon} = user
-  console.log(user)
   const [formData, setFormData] = useState({name, email, companionId})
 
   function handleFormChange(event){
     setFormData({...formData, [event.target.id]: event.target.value})
-    console.log(formData)
   }
 
   function handleFormSubmit(event){
     event.preventDefault()
-    console.log(formData)
     updateUser(formData)
   }
 

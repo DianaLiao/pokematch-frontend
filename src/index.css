@@ -60,3 +60,7 @@ div.game-card img {
   height: 96px;
   margin: 5px;
 }
+
+div.hidden {
+  visibility: hidden;
+}
