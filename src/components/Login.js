@@ -43,7 +43,7 @@ function Login({login, signup, errors, setErrors}){
           <input 
             onChange={handleFormChange} 
             value={formData.email}
-            type="text" id="email">
+            type="email" id="email">
           </input><br/>
           <label htmlFor="password">Password:</label>
           <input 

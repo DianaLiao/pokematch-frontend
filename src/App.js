@@ -61,6 +61,22 @@ function App() {
     setCurrentUser({})
   }
 
+  function updateUser(formData){
+    const fetchObj = createFetchObj("PATCH", formData)
+    console.log(fetchObj)
+    fetch(`${serverUrl}/users/${currentUser.id}`, fetchObj)
+      .then(resp => resp.json())
+      .then(resp => {
+        console.log(resp)
+        if (resp.errors){
+          setErrors(resp.errors)
+        }
+        else {
+          setCurrentUser(resp)
+        }
+      })
+  }
+
   function createFetchObj(method, data){
     return {
       method,
@@ -78,7 +94,7 @@ function App() {
           <Switch>
             <Route exact path="/">
               {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
-              : <Welcome user={currentUser}/>}
+              : <Welcome user={currentUser} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors}/>}
             </Route>
             <Route path="/new-game">
               {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
