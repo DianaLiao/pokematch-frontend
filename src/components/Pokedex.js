@@ -21,7 +21,10 @@ function Pokedex ({userMon, appRef}){
   function generateDexCards(pokemonArray){
     const userMonIds = userMon.map(mon => mon.pokemonId)
 
-    const displayArray = pokemonArray.map(pokemon => {
+    //sort pokemonArray to accomodate updated dex entries
+    const sortedArray = pokemonArray.sort((a,b) => a.id - b.id)
+
+    const displayArray = sortedArray.map(pokemon => {
 
       const userMonInfo = userMon.find(mon => mon.pokemonId == pokemon.id)
       
@@ -45,6 +48,7 @@ function Pokedex ({userMon, appRef}){
   function toggleModal() {
     setInfoOpen(value => !value)
   }
+
 
 
   return (

@@ -77,6 +77,16 @@ function App() {
       })
   }
 
+  function submitMatches(matchedMon){
+    console.log("pre fetch list", matchedMon)
+    matchedMon.forEach(mon => {
+      const fetchObj = createFetchObj("POST", {user_id: currentUser.id, pokemon_id:mon.id})
+      fetch(`${serverUrl}/user_pokemons/match`, fetchObj)
+        .then(resp => resp.json())
+        .then(console.log)
+    })
+  }
+
   function createFetchObj(method, data){
     return {
       method,
@@ -99,7 +109,7 @@ function App() {
             <Route path="/new-game">
               {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
               : <GameProvider>
-                  <NewGame serverUrl={serverUrl}/>
+                  <NewGame serverUrl={serverUrl} submitMatches={submitMatches}/>
                 </GameProvider>}
             </Route>
             <Route path="/pokedex">
