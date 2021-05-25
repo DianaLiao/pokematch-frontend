@@ -17,7 +17,7 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
 
   const companionIdOptions = userPokemons.map(entry => {
     if (entry.timesCaught > 0) {
-      return <option value={entry.pokemonId}>{entry.pokemonName}</option>
+      return <option key={entry.pokemonId} value={entry.pokemonId}>{entry.pokemonName}</option>
     }
   })
 

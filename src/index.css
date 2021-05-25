@@ -49,10 +49,22 @@ div.dex-modal{
   text-transform: capitalize;
 }
 
+/* div.game {
+  display:flex;
+  flex-wrap: wrap;
+} */
+
+
 div#game-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 600px;
+  flex-grow: 2;
+}
+
+div#game-matches {
+  flex-grow: 1;
 }
 
 div.game-card img {

@@ -18,6 +18,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState({}) 
   const [errors, setErrors] = useState([])
+  const [newMatches, setNewMatches] = useState([])
   const appEl = useRef(null)
   const history = useHistory()
 
@@ -83,8 +84,24 @@ function App() {
       const fetchObj = createFetchObj("POST", {user_id: currentUser.id, pokemon_id:mon.id})
       fetch(`${serverUrl}/user_pokemons/match`, fetchObj)
         .then(resp => resp.json())
-        .then(console.log)
+        .then(entry => {
+          setNewMatches([...newMatches, entry])
+          // console.log("response", entry)
+          updateUserPokemons(entry)
+        })
     })
+    history.push("/pokedex")
+  }
+
+  function updateUserPokemons(newEntry){
+    const monIndex = currentUser.userPokemons.findIndex(mon => mon.id == newEntry.id)
+    
+    if (monIndex !== -1){
+      currentUser.userPokemons[monIndex] = newEntry
+    }
+    else {
+      currentUser.userPokemons.push(newEntry)
+    }
   }
 
   function createFetchObj(method, data){
@@ -114,7 +131,7 @@ function App() {
             </Route>
             <Route path="/pokedex">
               {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
-              : <Pokedex userMon={currentUser.userPokemons} appRef={appEl}/>}
+              : <Pokedex userMon={currentUser.userPokemons} appRef={appEl} newMatches={newMatches} setNewMatches={setNewMatches}/>}
             </Route>
             <Route path="/login">
               <Login login={login} signup={signup} errors={errors} setErrors={setErrors}/>

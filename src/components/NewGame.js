@@ -31,10 +31,10 @@ function NewGame({serverUrl, submitMatches}){
 
   return (
     <div className="game">
-      <h5>"Newww gaaaamez"</h5>
+      <h5>Newww gaaaamez</h5>
       <PowerUpList />
       <GameSection gameCards={gameCards} />
-      <MatchList />
+      <MatchList /> <br/>
       <button onClick={() => submitMatches(matchedMon)}>Submit Matches</button>
     </div>
 
