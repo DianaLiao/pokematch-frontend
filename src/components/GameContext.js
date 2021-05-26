@@ -1,3 +1,4 @@
+
 import {createContext, useState} from "react"
 
 // create the context object
@@ -9,14 +10,14 @@ function GameProvider({children}) {
   const [matchedMon, setMatchedMon] = useState([])
   const [flippedCards, setFlippedCards] = useState([])
   const [lastClicked, setLastClicked] = useState({})
-
+  const [isGameRunning, setIsGameRunning] = useState(false)
 
   function processFlipCard(){
     // console.log(lastClicked)
     const {cardId, apiId, frontSprite, id, name, cardRef} = lastClicked
 
     if (flippedCards[0] && cardId === flippedCards[0].cardId){
-      alert("please choose a different card")
+      // alert("Please choose a different card")
     }
     else{
       setFlippedCards([...flippedCards, {cardId, apiId, cardRef, name}])
@@ -29,16 +30,20 @@ function GameProvider({children}) {
       const isMatched = compareCards()
       if (!isMatched) {
         // console.log("no match!")
-        setFlippedCards([])
+        setTimeout(()=>setFlippedCards([]), 1500)
       }
       else {
         // console.log("match!")
+        setTimeout(() => {
         flippedCards.forEach(mon => {
           const card = mon.cardRef
           card.className = "hidden game-card"
         })
-        setMatchedMon([...matchedMon, {apiId, id, frontSprite, name}])
-        setFlippedCards([])
+        
+          setMatchedMon([...matchedMon, {apiId, id, frontSprite, name}])
+          setFlippedCards([])
+        },1500)
+       
       }
     }
   }
@@ -53,13 +58,27 @@ function GameProvider({children}) {
     }
   }
 
+  function startGame(){
+    setIsGameRunning(true)
+    setFlippedCards([])
+  }
+
+  function stopGame(){
+    setIsGameRunning(false)
+    setFlippedCards([])
+    setMatchedMon([])
+  }
+
   const value = {
     flippedCards,
     matchedMon,
     processFlipCard, 
     analyzeCards,
     lastClicked,
-    setLastClicked
+    setLastClicked,
+    isGameRunning,
+    startGame,
+    stopGame
   }
   
   return (

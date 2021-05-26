@@ -86,7 +86,7 @@ function App() {
         .then(resp => resp.json())
         .then(entry => {
           setNewMatches([...newMatches, entry])
-          // console.log("response", entry)
+          console.log("response", entry)
           updateUserPokemons(entry)
         })
     })
@@ -95,13 +95,16 @@ function App() {
 
   function updateUserPokemons(newEntry){
     const monIndex = currentUser.userPokemons.findIndex(mon => mon.id == newEntry.id)
+    const userCopy = {...currentUser}
     
     if (monIndex !== -1){
-      currentUser.userPokemons[monIndex] = newEntry
+      userCopy.userPokemons[monIndex] = newEntry
     }
     else {
-      currentUser.userPokemons.push(newEntry)
+      userCopy.userPokemons.push(newEntry)
     }
+    
+    setCurrentUser(userCopy)
   }
 
   function createFetchObj(method, data){

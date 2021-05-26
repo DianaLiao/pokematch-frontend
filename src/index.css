@@ -12,13 +12,49 @@ code {
     monospace;
 }
 
+@font-face {
+  font-family: 'Pokemon-Normal';
+  src:url('Pokemon-Normal.ttf.woff') format('woff'),
+      url('Pokemon-Normal.ttf.svg#Pokemon-Normal') format('svg'),
+      url('Pokemon-Normal.ttf.eot'),
+      url('Pokemon-Normal.ttf.eot?#iefix') format('embedded-opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+header {
+  /* background-image: linear-gradient(to bottom right, #ff0000, #640707); */
+  background-color: #cc0000;
+}
+
+header h1 { 
+  font-family: 'Pokemon-Normal', Helvetica, sans-serif;
+  font-size: 3.5em;
+  text-shadow: 4px 4px 10px #b3a225;
+  -webkit-text-stroke: 1px #3b4cca;
+	-webkit-text-fill-color: #ffde00;
+  text-align: center;
+  margin: 0px;
+}  
+
+nav {
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #b3a225;
+  padding: 10px 0px;
+  align-content: baseline;
+}
+
 nav a {
-  margin: 0px 10px 0px 0px;
+  margin: 0px 10px;
   text-decoration: none;
+  color: #3b4cca;
 }
 
 nav a.active {
-  background-color: aquamarine;
+  font-family: 'Pokemon-Normal', Helvetica, sans-serif;
+  font-size: x-large;
 }
 
 div#pokedex {
@@ -71,6 +107,7 @@ div.game-card img {
   width: 96px;
   height: 96px;
   margin: 5px;
+  border-radius: 5px;
 }
 
 div.hidden {

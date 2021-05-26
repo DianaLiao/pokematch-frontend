@@ -4,7 +4,7 @@ function Header(){
 
   return (
     <header>
-      <h1>Match 'em if you can</h1>
+      <h1>PokéMatch 'em All!</h1>
     </header>
   )
 }

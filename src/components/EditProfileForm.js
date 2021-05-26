@@ -3,8 +3,10 @@ import {useState} from "react"
 
 function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
 
-  const {name, email, companionId, userPokemons, numberOfCaughtMon} = user
+  const {name, email, companionId, userPokemons} = user
   const [formData, setFormData] = useState({name, email, companionId})
+
+  console.log(formData)
 
   function handleFormChange(event){
     setFormData({...formData, [event.target.id]: event.target.value})
@@ -23,6 +25,8 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
 
   const errorsList = errors.length > 0 ? <ul>{errors.map(error => <li>{error}</li>)}</ul> : null
 
+  const numberOfCaughtMon = user.userPokemons.filter(entry => entry.timesCaught > 0).length
+
   return (
     <form autoComplete="off" onSubmit={handleFormSubmit}>
       <label htmlFor="name">Name (to be seen on leaderboards):</label>
@@ -37,7 +41,7 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
           <select onChange={handleFormChange} name="companionId" id="companionId" value={formData.companionId}>
             {companionIdOptions}
           </select>
-          <img src={userPokemons.find(entry => entry.pokemonId == formData.companionId).pokemonPic} />
+          <img height="96px" src={formData.companionId ? userPokemons.find(entry => entry.pokemonId == formData.companionId).pokemonPic : "../blank_pokeball.png"} />
         </> 
         : "No pokémon caught yet!"
       }<br/>

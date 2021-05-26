@@ -20,11 +20,11 @@ function GameCard(props){
   }, [lastClicked])
 
   useEffect(() => {
-    setTimeout(() => analyzeCards(), 1500)
+   analyzeCards()
   }, [flippedCards])
 
   return (
-    <div ref={cardEl} onClick={flipCard} className="game-card">
+    <div ref={cardEl} onClick={flippedCards.length < 2 ? flipCard : null} className="game-card">
       <img src={flippedIds.includes(cardId) ? frontSprite : cardBackImg} alt={name}/>
     </div>
   )
