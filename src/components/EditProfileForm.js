@@ -4,6 +4,7 @@ import {useState} from "react"
 function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
 
   const {name, email, companionId, userPokemons} = user
+
   const [formData, setFormData] = useState({name, email, companionId})
 
   console.log(formData)
@@ -17,16 +18,17 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
     updateUser(formData)
   }
 
-  const companionIdOptions = userPokemons.map(entry => {
-    if (entry.timesCaught > 0) {
-      return <option key={entry.pokemonId} value={entry.pokemonId}>{entry.pokemonName}</option>
-    }
-  })
-
   const errorsList = errors.length > 0 ? <ul>{errors.map(error => <li>{error}</li>)}</ul> : null
 
-  const numberOfCaughtMon = user.userPokemons.filter(entry => entry.timesCaught > 0).length
+  const caughtMon = user.userPokemons.filter(entry => entry.timesCaught > 0)
+  const numberOfCaughtMon = caughtMon.length
 
+  const companionIdOptions = caughtMon.map(entry => {
+      return <option key={entry.pokemonId} value={entry.pokemonId}>{entry.pokemonName}</option>
+    }
+  )
+
+  // debugger
   return (
     <form autoComplete="off" onSubmit={handleFormSubmit}>
       <label htmlFor="name">Name (to be seen on leaderboards):</label>
@@ -38,10 +40,10 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
       {numberOfCaughtMon > 0 ? 
         <>
           <label htmlFor="companionId">Choose your avatar:</label>
-          <select onChange={handleFormChange} name="companionId" id="companionId" value={formData.companionId}>
+          <select onChange={handleFormChange} name="companionId" id="companionId" value={numberOfCaughtMon === 1 ? companionIdOptions[0].props.value : formData.companionId}>
             {companionIdOptions}
           </select>
-          <img height="96px" src={formData.companionId ? userPokemons.find(entry => entry.pokemonId == formData.companionId).pokemonPic : "../blank_pokeball.png"} />
+          <img height="96px" src={formData.companionId ? caughtMon.find(entry => entry.pokemonId == formData.companionId).pokemonPic : "../blank_pokeball.png"} />
         </> 
         : "No pokémon caught yet!"
       }<br/>
