@@ -13,6 +13,7 @@ import NavMenu from "./components/NavMenu";
 import NewGame from "./components/NewGame"
 import Pokedex from "./components/Pokedex"
 import { GameProvider } from "./components/GameContext"
+import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
 
 function App() {
 
@@ -78,18 +79,30 @@ function App() {
       })
   }
 
-  function submitMatches(matchedMon){
+  function submitMatches(matchedMon, bonus=0){
     console.log("pre fetch list", matchedMon)
+
+    const bonusFetchObj = createFetchObj("PATCH", {user_id: currentUser.id, score_to_add: bonus})
+    
     matchedMon.forEach(mon => {
-      const fetchObj = createFetchObj("POST", {user_id: currentUser.id, pokemon_id:mon.id})
-      fetch(`${serverUrl}/user_pokemons/match`, fetchObj)
+      const matchFetchObj = createFetchObj("POST", {user_id: currentUser.id, pokemon_id:mon.id})
+      const addScoreFetchObj = createFetchObj("PATCH", {user_id: currentUser.id, score_to_add: 10})
+
+      fetch(`${serverUrl}/user_pokemons/match`, matchFetchObj)
         .then(resp => resp.json())
         .then(entry => {
           setNewMatches([...newMatches, entry])
           console.log("response", entry)
           updateUserPokemons(entry)
         })
+      fetch(`${serverUrl}/users/${currentUser.id}/add_score`, addScoreFetchObj)
     })
+
+    fetch(`${serverUrl}/users/${currentUser.id}/add_score`, bonusFetchObj)
+      .then(resp => resp.json())
+      .then(updatedUser => {
+        setCurrentUser(updatedUser)
+      })
     history.push("/pokedex")
   }
 
