@@ -77,7 +77,23 @@ div.dex-modal{
   width: 30%;
   min-width: 150px;
   position: fixed;
-  top: 0;
+  top: 30%;
+  left: 30%;
+  transition: all 5s ease-in-out;
+}
+
+div.game-result-modal {
+  border-style: solid;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  min-width: 150px;
+  position: fixed;
+  top: 30%;
+  left: 30%;
   transition: all 5s ease-in-out;
 }
 

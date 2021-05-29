@@ -5,35 +5,21 @@ import PowerUpList from "./game/PowerUpList";
 
 import GameCard from "./game/GameCard";
 import GameSection from "./game/GameSection";
+import GameResultModal from "./game/GameResultModal"
 
 import {GameContext} from "./GameContext"
 
 
-function NewGame({serverUrl, submitMatches}){
+function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNewResult, newMatches}){
 
   const fetchUrl = `${serverUrl}/pokemons/game`
   const [gameMon, setGameMon] = useState([]) 
-  const [currentDifficulty, setDifficulty] = useState({numCards:8})
-  // const [numberOfCards, setNumberOfCards] = useState(8)
   
-  const {matchedMon, isGameRunning, startGame, stopGame} = useContext(GameContext)
+  const {matchedMon, isGameRunning, startGame, stopGame, currentDifficulty, setDifficulty, diffArray} = useContext(GameContext)
 
-
-  // set difficulty settings here
-  function createDifficulty (name, numCards, timeLimit, bonus=0){
-    return {
-      name,
-      numCards,
-      timeLimit,
-      bonus
-    }
-  }
-  const easyDiff = createDifficulty("Easy", 8, 45, 0)
-  const mediumDiff = createDifficulty("Medium", 16, 60, 25)
-  const hardDiff = createDifficulty("Hard", 24, 75, 50)
-  const diffArray = [easyDiff,mediumDiff,hardDiff]
-
-  // actually set difficulty
+  // clear previous game responses
+  useEffect(() => setNewMatches([]), [])
+  
   function setDifficultySetting({target}){
     const settingName = (target.value)
     console.log(target.value)
@@ -49,7 +35,6 @@ function NewGame({serverUrl, submitMatches}){
   const gameCards = gameMon.map(mon => {
     return <GameCard {...mon} key={mon.cardId} />
   })
-
 
   const difficultyOptions = diffArray.map(diff => {
     return <option key={diff.name} value={diff.name}>{diff.name} - {diff.numCards} cards, {diff.timeLimit} seconds, completion bonus: {diff.bonus} points</option>
@@ -72,6 +57,16 @@ function NewGame({serverUrl, submitMatches}){
       {isGameRunning ? <GameSection gameCards={gameCards} /> : "Time's up or you haven't started or whatever"}
       <MatchList /> <br/>
       <button onClick={() => submitMatches(matchedMon, currentDifficulty.bonus)}>Submit Matches</button>
+      
+      
+      {isNewResult ? 
+        <GameResultModal 
+          newMatches={newMatches} 
+          isNewResult={isNewResult} 
+          setIsNewResult={setIsNewResult} 
+        />  
+        : null
+      }
     </div>
 
   )

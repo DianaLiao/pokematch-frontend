@@ -20,6 +20,7 @@ function App() {
   const [currentUser, setCurrentUser] = useState({}) 
   const [errors, setErrors] = useState([])
   const [newMatches, setNewMatches] = useState([])
+  const [isNewResult, setIsNewResult] = useState(false)
   const appEl = useRef(null)
   const history = useHistory()
 
@@ -103,8 +104,11 @@ function App() {
       .then(updatedUser => {
         setCurrentUser(updatedUser)
       })
-    history.push("/pokedex")
+    // history.push("/pokedex")
+
+    setTimeout(()=>setIsNewResult(true), 1500)
   }
+
 
   function updateUserPokemons(newEntry){
     const monIndex = currentUser.userPokemons.findIndex(mon => mon.id == newEntry.id)
@@ -137,12 +141,23 @@ function App() {
           <Switch>
             <Route exact path="/">
               {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
-              : <Welcome user={currentUser} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors}/>}
+              : <Welcome 
+                  user={currentUser} 
+                  serverUrl={serverUrl} 
+                  updateUser={updateUser} 
+                  errors={errors} 
+                  setErrors={setErrors}/>}
             </Route>
             <Route path="/new-game">
               {Object.keys(currentUser).length === 0 ? <Redirect to="/login" /> 
               : <GameProvider>
-                  <NewGame serverUrl={serverUrl} submitMatches={submitMatches}/>
+                  <NewGame 
+                    serverUrl={serverUrl} 
+                    submitMatches={submitMatches} 
+                    setIsNewResult={setIsNewResult} 
+                    isNewResult={isNewResult}
+                    setNewMatches={setNewMatches} 
+                    newMatches={newMatches}/>
                 </GameProvider>}
             </Route>
             <Route path="/pokedex">

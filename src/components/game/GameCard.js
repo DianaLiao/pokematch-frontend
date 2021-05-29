@@ -12,7 +12,7 @@ function GameCard(props){
   const cardBackImg = "./sqkrmic.jpg"
 
   function flipCard(){
-    setLastClicked({...props, cardRef: cardEl.current})
+    setLastClicked({...props, cardRef: cardEl.current})    
   }
 
   useEffect(() => {
