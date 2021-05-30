@@ -84,7 +84,8 @@ function App() {
     console.log("pre fetch list", matchedMon)
 
     const bonusFetchObj = createFetchObj("PATCH", {user_id: currentUser.id, score_to_add: bonus})
-    
+    let tempArray =[]
+
     matchedMon.forEach(mon => {
       const matchFetchObj = createFetchObj("POST", {user_id: currentUser.id, pokemon_id:mon.id})
       const addScoreFetchObj = createFetchObj("PATCH", {user_id: currentUser.id, score_to_add: 10})
@@ -92,11 +93,14 @@ function App() {
       fetch(`${serverUrl}/user_pokemons/match`, matchFetchObj)
         .then(resp => resp.json())
         .then(entry => {
-          setNewMatches([...newMatches, entry])
+          // setNewMatches([...newMatches, entry])
+          tempArray.push(entry)
           console.log("response", entry)
           updateUserPokemons(entry)
         })
       fetch(`${serverUrl}/users/${currentUser.id}/add_score`, addScoreFetchObj)
+      console.log("tempArray", tempArray)
+      setNewMatches(tempArray)
     })
 
     fetch(`${serverUrl}/users/${currentUser.id}/add_score`, bonusFetchObj)

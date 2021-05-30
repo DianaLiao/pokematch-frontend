@@ -30,24 +30,30 @@ function Welcome({user, serverUrl, updateUser, errors, setErrors}){
 
   return (
     <div className="welcome">
-      <h5>Welcome, {name}!</h5>
-      {companion ? <><img src={companion.front_sprite} alt={companion.name} />
-      <h5><span className="capitalize">{companion.name}</span> says hi!</h5></> : "No companion set! Go catch a pokémon!"}<br/>
-      <div>Total score: {totalScore}</div>
-      <button onClick={handleFormToggle}>{showUpdateForm ? "Close" : "Open"} Profile edit form</button>
-      {showUpdateForm ? <EditProfileForm user={user} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors} /> : null}
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Completion</th>
-            <th>Total Score</th>
-          </tr>
-        </thead>
-        <tbody>
-          {leaderRows}
-        </tbody>
-      </table>
+      <div className="welcome-one">
+        <h5>Welcome, {name}!</h5>
+        {companion ? 
+          <><img src={companion.front_sprite} alt={companion.name} height="96px" width="96px"/>
+          <h5><span className="capitalize">{companion.name}</span> says hi!</h5></> 
+          : "No companion set! Go catch a pokémon!"}<br/>
+          <div>Total score: {totalScore}</div>
+         <button onClick={handleFormToggle}>{showUpdateForm ? "Close" : "Open"} Profile edit form</button>
+        {showUpdateForm ? <EditProfileForm user={user} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors} /> : null}
+      </div>
+      <div className="welcome-two">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Completion</th>
+              <th>Total Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            {leaderRows}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 }

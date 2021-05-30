@@ -14,7 +14,6 @@ function GameProvider({children}) {
   const [currentDifficulty, setDifficulty] = useState({numCards:8})
 
   function processFlipCard(){
-    // console.log(lastClicked)
     const {cardId, apiId, frontSprite, id, name, cardRef} = lastClicked
 
     if (flippedCards[0] && cardId === flippedCards[0].cardId){

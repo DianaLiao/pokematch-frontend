@@ -44,17 +44,54 @@ nav {
   background-color: #b3a225;
   padding: 10px 0px;
   align-content: baseline;
+  
 }
 
 nav a {
   margin: 0px 10px;
+  padding: 5px 10px;
   text-decoration: none;
   color: #3b4cca;
+  font-family: 'Pokemon-Normal', Helvetica, sans-serif;
+  font-size: x-large;
 }
 
 nav a.active {
-  font-family: 'Pokemon-Normal', Helvetica, sans-serif;
-  font-size: x-large;
+  -webkit-text-stroke: 1px #3b4cca;
+	-webkit-text-fill-color: #ffde00;
+  background: #e0daa6;;
+}
+
+div.welcome {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+div.welcome img {
+  margin: auto;
+}
+
+div.welcome-one {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+}
+
+div.welcome tr.self {
+  font-weight: bold;
+}
+
+div#profile-form {
+  display: flex;
+  flex-direction: column;
+}
+
+div#profile-form form {
+  display: flex;
+  flex-direction: column;
 }
 
 div#pokedex {
@@ -82,6 +119,40 @@ div.dex-modal{
   transition: all 5s ease-in-out;
 }
 
+.capitalize {
+  text-transform: capitalize;
+}
+
+div.game {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 10px;
+}
+
+div#game-control {
+  display:flex;
+  justify-content: center;
+}
+
+div#game-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+div#game-matches {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+div.game-card img {
+  width: 96px;
+  height: 96px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
 div.game-result-modal {
   border-style: solid;
   border-radius: 5px;
@@ -95,35 +166,6 @@ div.game-result-modal {
   top: 30%;
   left: 30%;
   transition: all 5s ease-in-out;
-}
-
-.capitalize {
-  text-transform: capitalize;
-}
-
-/* div.game {
-  display:flex;
-  flex-wrap: wrap;
-} */
-
-
-div#game-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  max-width: 600px;
-  flex-grow: 2;
-}
-
-div#game-matches {
-  flex-grow: 1;
-}
-
-div.game-card img {
-  width: 96px;
-  height: 96px;
-  margin: 5px;
-  border-radius: 5px;
 }
 
 div.hidden {

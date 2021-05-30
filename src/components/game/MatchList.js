@@ -11,7 +11,7 @@ function MatchList(){
 
   return (
     <div id="game-matches">
-      Matched Pokeymanz
+      You've matched:
       {matchedImages}
     </div>
   )

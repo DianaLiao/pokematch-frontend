@@ -30,25 +30,27 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
 
   // debugger
   return (
-    <form autoComplete="off" onSubmit={handleFormSubmit}>
-      <label htmlFor="name">Name (to be seen on leaderboards):</label>
-      <input onChange={handleFormChange} value={formData.name} type="text" id="name"></input><br/>
-      <label htmlFor="email">E-mail address (for login):</label>
-      <input onChange={handleFormChange} value={formData.email} type="email" id="email"></input><br/>
-      {/* <label htmlFor="password">Password:</label>
-      <input onChange={handleFormChange} value={formData.password} type="password" id="password"></input><br/> */}
-      {numberOfCaughtMon > 0 ? 
-        <>
-          <label htmlFor="companionId">Choose your avatar:</label>
-          <select onChange={handleFormChange} name="companionId" id="companionId" value={numberOfCaughtMon === 1 ? companionIdOptions[0].props.value : formData.companionId}>
-            {companionIdOptions}
-          </select>
-          <img height="96px" src={formData.companionId ? caughtMon.find(entry => entry.pokemonId == formData.companionId).pokemonPic : "../blank_pokeball.png"} />
-        </> 
-        : "No pokémon caught yet!"
-      }<br/>
-      <input type="submit" value="Submit Profile Update"></input>
-    </form>
+    <div id="profile-form">
+      <form autoComplete="off" onSubmit={handleFormSubmit}>
+        <label htmlFor="name">Name (also seen on leaderboards):</label>
+        <input onChange={handleFormChange} value={formData.name} type="text" id="name"></input><br/>
+        <label htmlFor="email">E-mail address (for login):</label>
+        <input onChange={handleFormChange} value={formData.email} type="email" id="email"></input><br/>
+        {/* <label htmlFor="password">Password:</label>
+        <input onChange={handleFormChange} value={formData.password} type="password" id="password"></input><br/> */}
+        {numberOfCaughtMon > 0 ? 
+          <>
+            <label htmlFor="companionId">Choose your avatar:</label>
+            <select onChange={handleFormChange} name="companionId" id="companionId" value={numberOfCaughtMon === 1 ? companionIdOptions[0].props.value : formData.companionId}>
+              {companionIdOptions}
+            </select>
+            <img src={formData.companionId ? caughtMon.find(entry => entry.pokemonId == formData.companionId).pokemonPic : "../blank_pokeball.png"} height="96px" width="96px"/>
+          </> 
+          : "No pokémon caught yet!"
+        }<br/>
+        <input type="submit" value="Submit Profile Update"></input>
+      </form>
+    </div>
   )
 
 }

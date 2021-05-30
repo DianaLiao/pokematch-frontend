@@ -1,14 +1,35 @@
 import ReactDOM from "react-dom";
 
-function GameResultModal({newMatches, isNewResult, setIsNewResult, gameRef}){
+function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult}){
 
-  console.log(newMatches)
-  
-  // if (!isNewResult) return null
+  console.log("newMatches", newMatches)
+  const newCatches = newMatches.filter(match => match.newCatch)
+  console.log("newCatches", newCatches)
+
+  const newCatchPics = newCatches.map(entry => {
+    return (
+      <div className="new-catch-pic">
+        <img src={entry.pokemon.frontSprite} alt={entry.pokemon.name} key={entry.pokemon.id}/>
+        <span>{entry.pokemon.name}</span>
+      </div>
+
+    )})
+
+  function closePopUp(){
+    setNewMatches([])
+    setIsNewResult(false)
+  }
+
+  const gameResult = (newCatches.length === 0) ?
+      <p>Sorry, no catches this time!</p> :
+      <div className="catch-container">
+          You've caught:
+          {newCatchPics}
+      </div>
 
   return ReactDOM.createPortal(
-    <div className="game-result-modal" onClick={()=>setIsNewResult(false)}>
-      You've caught some stuff!
+    <div className="game-result-modal" onClick={closePopUp}>
+      {gameResult}
     </div>,
     document.body
   )
