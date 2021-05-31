@@ -9,8 +9,8 @@ function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult
   const newCatchPics = newCatches.map(entry => {
     const isFirstTime = entry.timesCaught === 1
     return (
-      <div className = {isFirstTime ? "first new-catch" : "new-catch"}>
-        <img src={entry.pokemon.frontSprite} alt={entry.pokemon.name} key={entry.pokemon.id}/>
+      <div className = {isFirstTime ? "first new-catch" : "new-catch"} key={entry.pokemon.id}>
+        <img src={entry.pokemon.frontSprite} alt={entry.pokemon.name} />
         <span>{entry.pokemon.name}</span> 
       </div>
 

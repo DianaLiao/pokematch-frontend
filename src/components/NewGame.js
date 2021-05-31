@@ -8,6 +8,7 @@ import GameSection from "./game/GameSection";
 import GameResultModal from "./game/GameResultModal"
 
 import {GameContext} from "./GameContext"
+import GameTimer from "./game/GameTimer";
 
 
 function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNewResult, newMatches}){
@@ -15,14 +16,29 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
   // const fetchUrl = `${serverUrl}/pokemons/game`
   // const [gameMon, setGameMon] = useState([]) 
   
-  const {matchedMon, isGameRunning, startGame, stopGame, currentDifficulty, setDifficulty, diffArray} = useContext(GameContext)
+  const {matchedMon, 
+      setMatchedMon,
+      isGameRunning, 
+      setFlippedCards,
+      setLastClicked,
+      startGame, 
+      stopGame, 
+      currentDifficulty, 
+      setDifficulty, 
+      diffArray, 
+      setTimeRemaining} = useContext(GameContext)
 
   // clear previous game responses
-  useEffect(() => setNewMatches([]), [])
+  useEffect(() => {
+    setNewMatches([])
+    setFlippedCards([])
+    setLastClicked({})
+  }, [])
   
   function setDifficultySetting({target}){
     const settingName = (target.value)
     setDifficulty(diffArray.find(diff => diff.name === settingName))
+    
   }
 
   // useEffect(() => {
@@ -46,6 +62,7 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
   function handleSubmit(){
     submitMatches(matchedMon, currentDifficulty.bonus)
     stopGame()
+    setMatchedMon([])
   }
 
   //set state for mounting cards? when timer runs out, unmount cards or GameSection
@@ -65,6 +82,7 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
       </div>
       {/* <PowerUpList /> */}
       <GameSection isGameRunning={isGameRunning} serverUrl={serverUrl}/> 
+      <GameTimer submitMatches={submitMatches}/>
       <MatchList /> <br/>
       <button onClick={handleSubmit}>Submit Matches</button>
       

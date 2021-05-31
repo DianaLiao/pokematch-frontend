@@ -42,7 +42,7 @@ function Pokedex ({userMon, appRef}){
         return <PokedexCard popUpInfo={popUpInfo} key={pokemon.apiId} {...pokemon} {...userMonInfo}/>
       }
       else {
-        return <PokedexCard key={pokemon.apiId} frontSprite={pokeBallImg} backSprite={pokeBallImg} name="unknown"/>
+        return <PokedexCard key={pokemon.apiId} frontSprite={pokeBallImg} backSprite={pokeBallImg} timesCaught="-1" name="unknown"/>
       }
     })
 

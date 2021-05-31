@@ -11,11 +11,12 @@ function GameProvider({children}) {
   const [flippedCards, setFlippedCards] = useState([])
   const [lastClicked, setLastClicked] = useState({})
   const [isGameRunning, setIsGameRunning] = useState(false)
-  const [currentDifficulty, setDifficulty] = useState({numCards:8})
+  const [currentDifficulty, setDifficulty] = useState({numCards:8, timeLimit:45})
+  const [timeRemaining, setTimeRemaining] = useState(45)
 
   function processFlipCard(){
     const {cardId, apiId, frontSprite, id, name, cardRef} = lastClicked
-
+    console.log("flippedCards",flippedCards)
     if (flippedCards[0] && cardId === flippedCards[0].cardId){
       // alert("Please choose a different card")
     }
@@ -59,12 +60,15 @@ function GameProvider({children}) {
   function startGame(){
     setIsGameRunning(true)
     setFlippedCards([])
+    setLastClicked({})
+    // setMatchedMon([])
+    setTimeRemaining(currentDifficulty.timeLimit)
   }
 
   function stopGame(){
     setIsGameRunning(false)
     setFlippedCards([])
-    setMatchedMon([])
+    // setMatchedMon([])
   }
 
   // set difficulty settings here
@@ -76,16 +80,18 @@ function GameProvider({children}) {
       bonus
     }
   }
-  const easyDiff = createDifficulty("Easy", 8, 45, 0)
+  const easyDiff = createDifficulty("Easy", 8, 30, 0)
   const mediumDiff = createDifficulty("Medium", 14, 60, 25)
-  const hardDiff = createDifficulty("Hard", 20, 75, 50)
+  const hardDiff = createDifficulty("Hard", 20, 90, 50)
   const testDiff = createDifficulty("testing", 2, 10, 0)
   const diffArray = [easyDiff,mediumDiff,hardDiff, testDiff]
 
 
   const value = {
     flippedCards,
+    setFlippedCards,
     matchedMon,
+    setMatchedMon,
     processFlipCard, 
     analyzeCards,
     lastClicked,
@@ -95,7 +101,9 @@ function GameProvider({children}) {
     stopGame,
     diffArray,
     currentDifficulty,
-    setDifficulty
+    setDifficulty,
+    timeRemaining,
+    setTimeRemaining
   }
   
   return (

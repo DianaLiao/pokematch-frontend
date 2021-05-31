@@ -1,6 +1,7 @@
 import {useState, useContext, useEffect} from "react"
 import {GameContext} from "../GameContext"
 import GameCard from "./GameCard";
+import GameTimer from "./GameTimer";
 
 function GameSection({serverUrl, isGameRunning}){
 
