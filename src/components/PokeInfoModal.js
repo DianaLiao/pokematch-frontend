@@ -14,7 +14,7 @@ function PokeInfoModal(props){
       <div className="capitalize">{name}</div>
       <div>Entry #{apiId}</div>
       <img src={parseInt(timesCaught) > 0 ? frontSprite : backSprite} alt={name}/>
-      <p>{parseInt(timesCaught) > 0 ? flavorText : "(catch one to find out more!)"}</p>
+      <p>{parseInt(timesCaught) > 0 ? flavorText : "(Catch one to find out more!)"}</p>
       <p>
         Times matched: {timesMatched}<br/>
         Times caught: {timesCaught}

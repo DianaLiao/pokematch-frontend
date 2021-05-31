@@ -9,7 +9,7 @@ function GameCard(props){
   const flippedIds = flippedCards.length > 0 ? flippedCards.map(card => card.cardId) : []
   
   const cardEl = useRef(null)
-  const cardBackImg = "./sqkrmic.jpg"
+  const cardBackImg = "blank_pokeball.png"
 
   function flipCard(){
     setLastClicked({...props, cardRef: cardEl.current})    

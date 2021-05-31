@@ -3,12 +3,14 @@ function PokedexCard(props){
 
   const {apiId, frontSprite, backSprite, name, popUpInfo, timesCaught} = props
 
+  const uncaught = parseInt(timesCaught) === 0
+
   return(
-    <div className="dex-card" onClick={popUpInfo}>
+    <div className={!uncaught ? "uncaught dex-card" : "caught dex-card"} onClick={popUpInfo}>
       <img 
-        src={parseInt(timesCaught)>0 ? frontSprite : backSprite} 
-        alt={`front of ${name}`} height="96" 
-        className={parseInt(timesCaught) === 0 ? "uncaught" : undefined}
+        src={!uncaught ? frontSprite : backSprite} 
+        alt={`${name}`} height="96" 
+        className={uncaught ? "uncaught" : undefined}
       />
     </div>
   )

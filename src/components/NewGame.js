@@ -1,8 +1,8 @@
 import { useState, useEffect, useContext } from "react"
+import Select from 'react-select'
 
 import MatchList from "./game/MatchList";
 import PowerUpList from "./game/PowerUpList";
-
 import GameCard from "./game/GameCard";
 import GameSection from "./game/GameSection";
 import GameResultModal from "./game/GameResultModal"
@@ -22,9 +22,7 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
   
   function setDifficultySetting({target}){
     const settingName = (target.value)
-    console.log(target.value)
     setDifficulty(diffArray.find(diff => diff.name === settingName))
-    console.log(currentDifficulty)
   }
 
   // useEffect(() => {
@@ -38,6 +36,11 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
 
   const difficultyOptions = diffArray.map(diff => {
     return <option key={diff.name} value={diff.name}>{diff.name} - {diff.numCards} cards, {diff.timeLimit} seconds, completion bonus: {diff.bonus} points</option>
+  })
+
+  const selectOptions = diffArray.map(diff => {
+    return {value: `${diff.name} - ${diff.numCards} cards, ${diff.timeLimit} seconds, completion bonus: ${diff.bonus} points`, 
+    label: diff.name, color: "#3b4cca"}
   })
 
   function handleSubmit(){
@@ -56,6 +59,7 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
         <select id="difficulty" onChange={setDifficultySetting}>
           {difficultyOptions}
         </select>
+        {/* <Select myFontSize="20px" options={selectOptions} /> */}
         <button onClick={startGame}>start</button>
         <button onClick={stopGame}>stop</button>
       </div>

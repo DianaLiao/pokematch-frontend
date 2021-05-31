@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -98,10 +101,25 @@ div#pokedex {
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color:bisque;
 }
 
 div.dex-card {
   border: 1px solid black;
+  border-radius: 10px;
+  margin: 3px;
+  transition: transform .2s;
+  /* box-shadow: 5px 10px 18px #888888; */
+  background: rgb(255, 255, 255);
+}
+
+div.dex-card:hover img {
+  /* transform: scale(1.1); */
+}
+
+#pokedex > div.caught:hover {
+  border: 3px dotted black;
+  margin: 1px;
 }
 
 div.dex-modal{
@@ -117,6 +135,7 @@ div.dex-modal{
   top: 30%;
   left: 30%;
   transition: all 5s ease-in-out;
+  font-family: 'Press Start 2P', cursive;
 }
 
 .capitalize {
@@ -128,17 +147,27 @@ div.game {
   flex-direction: column;
   justify-content: center;
   padding: 0px 10px;
+  background-color: #e8dac6;
 }
 
 div#game-control {
   display:flex;
   justify-content: center;
+  max-width: 600px;
+  margin: auto;
 }
+
+div#game-control select {
+
+}
+
 
 div#game-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 600px;
+  margin: auto;
 }
 
 div#game-matches {
@@ -146,11 +175,24 @@ div#game-matches {
   flex-wrap: wrap;
 }
 
-div.game-card img {
+div.game-card {
+  background-color: white;
   width: 96px;
   height: 96px;
   margin: 5px;
-  border-radius: 5px;
+  border-radius: 10px;
+  transition: transform .2s;
+  box-shadow: 5px 10px 18px #888888;
+}
+
+div.game-card img {
+  width: 96px;
+  height: 96px;
+  border-radius: 10px;
+}
+
+div.game-card:hover {
+  transform: scale(1.1);
 }
 
 div.game-result-modal {
@@ -166,6 +208,10 @@ div.game-result-modal {
   top: 30%;
   left: 30%;
   transition: all 5s ease-in-out;
+}
+
+div.game-result-modal .first {
+  color: rgb(126, 149, 190);
 }
 
 div.hidden {
