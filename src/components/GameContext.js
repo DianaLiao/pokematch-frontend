@@ -17,10 +17,11 @@ function GameProvider({children}) {
   function processFlipCard(){
     const {cardId, apiId, frontSprite, id, name, cardRef} = lastClicked
     console.log("flippedCards",flippedCards)
+    console.log("last clicked", lastClicked)
     if (flippedCards[0] && cardId === flippedCards[0].cardId){
       // alert("Please choose a different card")
     }
-    else{
+    else if (lastClicked.cardId) {
       setFlippedCards([...flippedCards, {cardId, apiId, cardRef, name}])
     }
   }
