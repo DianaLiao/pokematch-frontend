@@ -80,6 +80,54 @@ nav a.active {
   background: #e0daa6;;
 }
 
+div.loading {
+  /* height: 100vh;
+  width: 100vw; */
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+div.loading .pokeball {
+  height: 250px;
+  width: 250px;
+  border: 10px solid black;
+  border-radius: 50%;
+  background-image: linear-gradient( red 125px, white 125px);
+  position:relative;
+  animation: shake 1s infinite;
+}
+
+@keyframes shake {
+  0%, 100% {transform: rotate(15deg);}
+  50% {transform: rotate(-15deg);}
+  /* 100% {transform: rotate(1deg);} */
+}
+
+div.loading .pokeball:before {
+  position: absolute;
+  content: "";
+  height: 25px;
+  width: 230px;
+  background-color: black;
+  top: 102.5px;
+}
+
+div.loading .pokeball:after {
+  position: absolute;
+  content: "";
+  height: 90px;
+  width: 90px;
+  background-image: radial-gradient( 
+    white 0px, white 10px,
+    black 10px, black 15px,
+    white 15px, white 32px,
+    black 32px);
+  top: 70px;
+  left: 70px;
+  border-radius: 50%;
+}
+
 div.forms-page {
   max-width: 600px;
   margin: 0 auto;
@@ -283,16 +331,19 @@ div.game-card:hover {
 div.game-result-modal {
   border-style: solid;
   border-radius: 5px;
-  margin: 20px auto;
   padding: 20px;
   background: #fff;
   border-radius: 5px;
-  width: 30%;
+  width: fit-content;
   min-width: 150px;
   position: fixed;
-  top: 5%;
-  left: 30%;
+  /* top: 5%;
+  left: 30%; */
+  transform: translate(-50%, -50%);
   transition: all 5s ease-in-out;
+  max-width: 65%;
+  left: 50%;
+  top: 50%;
 }
 
 div.game-result-modal .first {

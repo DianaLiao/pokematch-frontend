@@ -26,7 +26,12 @@ function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult
     setIsNewResult(false)
   }
 
-  const loadingBall = <div className="loading">loading</div>
+  const loadingBall = 
+    <div className="loading">
+      <div className="pokeball">
+
+      </div>
+    </div>
 
   const gameResult = (newCatches.length === 0) ?
       <p>Sorry, no catches this time!</p> :
