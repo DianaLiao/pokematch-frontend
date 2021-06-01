@@ -42,7 +42,6 @@ function GameProvider({children}) {
           setMatchedMon([...matchedMon, {apiId, id, frontSprite, name}])
           setFlippedCards([])
         },1000)
-       
       }
     }
   }

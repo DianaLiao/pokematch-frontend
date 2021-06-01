@@ -65,9 +65,6 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
     setMatchedMon([])
   }
 
-  //set state for mounting cards? when timer runs out, unmount cards or GameSection
-
-
   return (
     <div className="game">
       <div id="game-control">

@@ -15,7 +15,12 @@ function GameTimer({submitMatches}){
       // submitMatches(matchedMon, currentDifficulty.bonus)
       stopGame()
     }
-    else {setTimeRemaining(oldTime => oldTime-1)}
+    else {
+      if (matchedMon.length*2 === currentDifficulty.numCards) {
+        stopGame()
+      }
+      setTimeRemaining(oldTime => oldTime-1)
+    }
   }
 
   useEffect(() => {
