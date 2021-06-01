@@ -91,6 +91,7 @@ div.loading {
   display: flex;
   justify-content: center;
   align-content: center;
+  cursor: wait;
 }
 
 div.loading .pokeball {
@@ -282,9 +283,11 @@ div.game {
   display:flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0px 10px;
   max-width: 600px;
   margin: auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  background-color: var(--screen);
 }
 
 div#game-control {
@@ -296,14 +299,37 @@ div#game-control select {
 
 }
 
+div#game-control .control-button:hover {
+  cursor: pointer;
+  border-style: inset;
+}
+
+div#game-control .control-button {
+  border-style: outset;
+  border-color: grey;
+  border-radius: 50%;
+  margin: 5px;
+  height: 50px;
+  width: 50px;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px 0px 0px 0px;
+}
+
+div.control-button.start {
+  background-color: #03a503;
+}
+
+div.control-button.stop {
+  background-color: #dc395f;
+}
 
 div#game-section {
   /* margin: auto; */
   width: inherit;
   padding: 20px;
   background-color: var(--screen);
-  border-radius: 5px;
-  border: 2px solid black;
+  border-radius: 10px 10px 0px 0px;
 }
 
 div#game-screen {
@@ -311,21 +337,26 @@ div#game-screen {
   flex-wrap: wrap;
   justify-content: center;
   background-color: var(--greenscreen);
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px;
+  height: 300px;
 }
 
 div#stopped-msg {
-  padding: 190px 0px;
-  min-height: 400px;
+  padding: 130px 0px;
   font-family: 'Press Start 2P', cursive;
+}
+
+div#game-control {
+  width: inherit;
+
+  padding: 10px;
+  background-color: var(--screen);
 }
 
 div#match-box {
   font-family: 'Press Start 2P', cursive;
   width: inherit;
-  border-radius: 5px;
-  border: 2px solid black;
   padding: 10px;
   background-color: var(--screen);
 }

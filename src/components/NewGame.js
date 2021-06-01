@@ -51,11 +51,11 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
   // })
 
   const difficultyOptions = diffArray.map(diff => {
-    return <option key={diff.name} value={diff.name}>{diff.name} - {diff.numCards} cards, {diff.timeLimit} seconds, completion bonus: {diff.bonus} points</option>
+    return <option key={diff.name} value={diff.name}>{diff.name} - {diff.numCards} cards, {diff.timeLimit} secs, completion bonus: {diff.bonus} points</option>
   })
 
   const selectOptions = diffArray.map(diff => {
-    return {value: `${diff.name} - ${diff.numCards} cards, ${diff.timeLimit} seconds, completion bonus: ${diff.bonus} points`, 
+    return {value: `${diff.name} - ${diff.numCards} cards, ${diff.timeLimit} secs, completion bonus: ${diff.bonus} points`, 
     label: diff.name, color: "#3b4cca"}
   })
 
@@ -81,8 +81,8 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
           {difficultyOptions}
         </select>
         {/* <Select myFontSize="20px" options={selectOptions} /> */}
-        <button onClick={startGame}>start</button>
-        <button onClick={stopGame}>stop</button>
+        <div className="control-button start" onClick={startGame}>Start</div>
+        <div className="control-button stop" onClick={stopGame}>Stop</div>
       </div>
       <MatchList /> <br/>
       <button onClick={handleSubmit}>Submit Matches</button>
