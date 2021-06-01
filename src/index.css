@@ -11,7 +11,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  height: 100%;
+  /* height: 100%; */
+  background-color: bisque;
 }
 
 #root, .App {
@@ -41,8 +42,7 @@ code {
 }
 
 main {
-  background-color: bisque;
-  height: inherit;
+  padding: 10px;
 }
 
 header {
@@ -142,7 +142,7 @@ div.forms-page {
 div.welcome {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 div.welcome img {
@@ -281,13 +281,27 @@ div.dex-modal-body .dex-text {
 
 div.game {
   display:flex;
-  flex-direction: column;
   justify-content: center;
-  max-width: 600px;
-  margin: auto;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+}
+
+div.game-one, div.game-two {
+  display:flex;
+  flex-direction: column;
   border: 2px solid black;
   border-radius: 10px;
   background-color: var(--screen);
+  padding: 10px;
+}
+
+div.game-one {
+  max-width:650px;
+}
+
+div.game-two {
+  max-width: 400px;
 }
 
 div#game-control {
@@ -339,12 +353,12 @@ div#game-screen {
   background-color: var(--greenscreen);
   border-radius: 10px;
   padding: 10px;
-  height: 300px;
 }
 
 div#stopped-msg {
   padding: 130px 0px;
   font-family: 'Press Start 2P', cursive;
+  height: 300px;
 }
 
 div#game-control {
@@ -357,13 +371,16 @@ div#game-control {
 div#match-box {
   font-family: 'Press Start 2P', cursive;
   width: inherit;
+  margin: 20px;
   padding: 10px;
-  background-color: var(--screen);
+  background-color: rgb(230, 228, 228);
+  border-radius: 10px;
 }
 
 div#game-matches {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-around;
 }
 
 div.game-card {

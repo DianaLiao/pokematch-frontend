@@ -55,8 +55,8 @@ function Welcome({user, serverUrl, updateUser, errors, setErrors}){
         </div>
 
          <button onClick={handleFormToggle}>{showUpdateForm ? "Close" : "Open"} Profile edit form</button>
-        {showUpdateForm ? <EditProfileForm user={user} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors} /> : null}
       </div>
+      {showUpdateForm ? <EditProfileForm user={user} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors} setFormShow={setFormShow}/> : null}
       <div className="welcome-two">
         <table>
           <thead>

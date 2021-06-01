@@ -51,7 +51,7 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
   // })
 
   const difficultyOptions = diffArray.map(diff => {
-    return <option key={diff.name} value={diff.name}>{diff.name} - {diff.numCards} cards, {diff.timeLimit} secs, completion bonus: {diff.bonus} points</option>
+    return <option key={diff.name} value={diff.name}>{diff.name} - {diff.numCards} cards, {diff.timeLimit}s, completion bonus: {diff.bonus} pts</option>
   })
 
   const selectOptions = diffArray.map(diff => {
@@ -73,6 +73,7 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
   return (
     <div className="game">
       {/* <PowerUpList /> */}
+      <div className="game-one">
       <GameSection serverUrl={serverUrl}/> 
       <GameTimer submitMatches={submitMatches}/>
       <div id="game-control">
@@ -84,9 +85,11 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
         <div className="control-button start" onClick={startGame}>Start</div>
         <div className="control-button stop" onClick={stopGame}>Stop</div>
       </div>
+      </div>
+      <div className="game-two">
       <MatchList /> <br/>
       <button onClick={handleSubmit}>Submit Matches</button>
-      
+      </div>
       
       {isNewResult ? 
         <GameResultModal 

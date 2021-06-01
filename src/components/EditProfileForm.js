@@ -1,7 +1,7 @@
 
 import {useState} from "react"
 
-function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
+function EditProfileForm({user, serverUrl, updateUser, errors, setErrors, setFormShow}) {
 
   const {name, email, companionId, companionName, motto, userPokemons} = user
 
@@ -16,6 +16,7 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
   function handleFormSubmit(event){
     event.preventDefault()
     updateUser(formData)
+    setFormShow(false)
   }
 
   const errorsList = errors.length > 0 ? <ul>{errors.map(error => <li>{error}</li>)}</ul> : null
@@ -30,7 +31,7 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
 
   // debugger
   return (
-    <div id="profile-form">
+    <div className="welcome-one" id="profile-form">
       <form autoComplete="off" onSubmit={handleFormSubmit}>
         <label htmlFor="name">Name (also on leaderboards):</label>
         <input onChange={handleFormChange} value={formData.name} type="text" id="name"></input><br/>
