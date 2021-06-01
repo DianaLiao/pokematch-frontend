@@ -11,14 +11,22 @@ function PokeInfoModal(props){
 
   return ReactDOM.createPortal(
     <div className="dex-modal" onClick={toggleModal}>
-      <div className="capitalize">{name}</div>
-      <div>Entry #{apiId}</div>
-      <img src={parseInt(timesCaught) > 0 ? frontSprite : backSprite} alt={name}/>
-      <p>{parseInt(timesCaught) > 0 ? flavorText : "(Catch one to find out more!)"}</p>
-      <p>
-        Times matched: {timesMatched}<br/>
-        Times caught: {timesCaught}
-      </p>
+      <div className="dex-modal-header">
+        <span className="capitalize">{name}</span>
+        <span className="right">Entry #{apiId}</span>
+      </div>
+      <div className="dex-modal-body">
+        <div className="dex-image">
+          <img src={parseInt(timesCaught) > 0 ? frontSprite : backSprite} alt={name}/>
+        </div>
+        <div className="dex-text">
+          <p>{parseInt(timesCaught) > 0 ? flavorText : "(Catch one to find out more!)"}</p>
+          <p>
+            Times matched: {timesMatched}<br/>
+            Times caught: {timesCaught}
+          </p>
+        </div>
+      </div>
     </div>,
     dexRef.current
   )

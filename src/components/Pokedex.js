@@ -65,16 +65,20 @@ function Pokedex ({userMon, appRef}){
   })
 
   return (
-    <>
+    <div id="pokedex" ref={dexEl}>
       <div className="dex-search">
-        <input type="text" id="name-search" value={searchText} onChange={handleSearchText}></input>
+        <input type="text" id="name-search" 
+          value={searchText} 
+          placeholder="Search by name..." 
+          onChange={handleSearchText}>
+        </input>
       </div>
-      <div id="pokedex" ref={dexEl}>
-        {!dexLoaded && <p>Loading Pokédex</p> }
-        <PokeInfoModal infoOpen={infoOpen} toggleModal={toggleModal} dexRef={dexEl} pokemon={modalProps}/>
+      {!dexLoaded && <p>Loading Pokédex</p> }
+      <PokeInfoModal infoOpen={infoOpen} toggleModal={toggleModal} dexRef={dexEl} pokemon={modalProps}/>
+      <div className="dex-card-list">
         {filteredDexCards}
       </div>
-    </>
+    </div>
   )
 }
 

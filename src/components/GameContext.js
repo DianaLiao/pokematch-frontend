@@ -11,8 +11,8 @@ function GameProvider({children}) {
   const [flippedCards, setFlippedCards] = useState([])
   const [lastClicked, setLastClicked] = useState({})
   const [isGameRunning, setIsGameRunning] = useState(false)
-  const [currentDifficulty, setDifficulty] = useState({numCards:8, timeLimit:45})
-  const [timeRemaining, setTimeRemaining] = useState(45)
+  const [currentDifficulty, setDifficulty] = useState({numCards:8, timeLimit:30})
+  const [timeRemaining, setTimeRemaining] = useState(30)
 
   function processFlipCard(){
     const {cardId, apiId, frontSprite, id, name, cardRef} = lastClicked
@@ -39,7 +39,6 @@ function GameProvider({children}) {
           const card = mon.cardRef
           card.className = "hidden game-card"
         })
-        
           setMatchedMon([...matchedMon, {apiId, id, frontSprite, name}])
           setFlippedCards([])
         },1000)

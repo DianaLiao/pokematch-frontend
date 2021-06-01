@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
+html {
+  height: 100%;
+}
 
 body {
   margin: 0;
@@ -8,7 +11,18 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
+
+#root, .App {
+  height: 100%;
+}
+
+main {
+  background-color: #e8dac6;
+  height: inherit;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -98,10 +112,28 @@ div#profile-form form {
 }
 
 div#pokedex {
+  background-color:bisque;
+}
+
+div.dex-search {
+  display:flex;
+  justify-content: center;
+  padding: 10px 0px;
+}
+
+div.dex-search input{
+  width: 50%;
+  min-width: 200px;
+  margin: auto;
+  height: 1.5em;
+  font-size: 1.2em;
+  font-family: 'Press Start 2P', cursive;
+}
+
+div.dex-card-list {
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
-  background-color:bisque;
 }
 
 div.dex-card {
@@ -117,25 +149,57 @@ div.dex-card:hover img {
   /* transform: scale(1.1); */
 }
 
-#pokedex > div.caught:hover, div.uncaught:hover{
+#pokedex div.seen:hover{
   border: 3px dotted black;
   margin: 1px;
 }
 
 div.dex-modal{
   border-style: solid;
-  border-radius: 5px;
-  margin: 20px auto;
+  border-radius: 10px;
   padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
+  background: rgb(255, 0, 0);
+  width: fit-content;
+  max-width: 65%;
   min-width: 150px;
   position: fixed;
-  top: 30%;
-  left: 30%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   transition: all 5s ease-in-out;
   font-family: 'Press Start 2P', cursive;
+  display: flex;
+  flex-direction: column;
+}
+
+div.dex-modal-header {
+  padding: 0px 0px 10px 0px;
+}
+
+div.dex-modal-body {
+  display: flex;
+  font-size: 0.8em;
+}
+
+div.dex-modal-body .dex-image {
+  border: 2px solid black;
+  background-color: #bdb8b8;
+  border-radius: 2px 2px 2px 25px;
+  margin: 0px 10px 0px 0px;
+}
+
+div.dex-image img {
+  background-color: #c1e89a;
+  margin: 15px 15px 20px 15px;
+}
+
+div.dex-modal-body .dex-text {
+  background-color: rgb(88, 88, 88);
+  color:ivory;
+  margin: 0px 0px 0px 10px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 2px;
 }
 
 .capitalize {
@@ -148,6 +212,7 @@ div.game {
   justify-content: center;
   padding: 0px 10px;
   background-color: #e8dac6;
+  max-height: 85%;
 }
 
 div#game-control {
@@ -225,4 +290,8 @@ div.hidden {
 
 img.uncaught {
   opacity: 0.5;
+}
+
+span.right {
+  float:right;
 }

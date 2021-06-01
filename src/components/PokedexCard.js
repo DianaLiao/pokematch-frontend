@@ -7,7 +7,7 @@ function PokedexCard(props){
   const unseen = parseInt(timesCaught) === -1
 
   return(
-    <div className={(!uncaught && !unseen) ? "caught dex-card" : unseen ? "unseen dex-card" : "uncaught dex-card"} onClick={popUpInfo}>
+    <div className={(!unseen) ? "seen dex-card" : "unseen dex-card"} onClick={popUpInfo}>
       <img 
         src={!uncaught ? frontSprite : backSprite} 
         alt={`${name}`} height="96" 
