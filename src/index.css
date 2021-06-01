@@ -18,25 +18,26 @@ body {
   height: 100%;
 }
 
-main {
-  background-color: #e8dac6;
-  height: inherit;
-}
 
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  monospace;
 }
 
 @font-face {
   font-family: 'Pokemon-Normal';
   src:url('Pokemon-Normal.ttf.woff') format('woff'),
-      url('Pokemon-Normal.ttf.svg#Pokemon-Normal') format('svg'),
-      url('Pokemon-Normal.ttf.eot'),
-      url('Pokemon-Normal.ttf.eot?#iefix') format('embedded-opentype'); 
+  url('Pokemon-Normal.ttf.svg#Pokemon-Normal') format('svg'),
+  url('Pokemon-Normal.ttf.eot'),
+  url('Pokemon-Normal.ttf.eot?#iefix') format('embedded-opentype'); 
   font-weight: normal;
   font-style: normal;
+}
+
+main {
+  background-color: bisque;
+  height: inherit;
 }
 
 header {
@@ -47,8 +48,8 @@ header {
 header h1 { 
   font-family: 'Pokemon-Normal', Helvetica, sans-serif;
   font-size: 3.5em;
-  text-shadow: 4px 4px 10px #b3a225;
-  -webkit-text-stroke: 1px #3b4cca;
+  text-shadow: 2px 2px 4px #b3a225;
+  -webkit-text-stroke: 1.5px #3b4cca;
 	-webkit-text-fill-color: #ffde00;
   text-align: center;
   margin: 0px;
@@ -79,6 +80,11 @@ nav a.active {
   background: #e0daa6;;
 }
 
+div.forms-page {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
 div.welcome {
   display: flex;
   flex-wrap: wrap;
@@ -94,7 +100,16 @@ div.welcome-one {
   flex-direction: column;
   justify-content: center;
   align-content: center;
-  text-align: center;
+  /* text-align: center; */
+  /* background-color: rgb(209, 207, 207); */
+  background-image: linear-gradient(to bottom right, #ececec, #808080);
+  margin: 10px 0px;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+div.welcome-one h2, div.welcome-one b {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
 }
 
 div.welcome tr.self {
@@ -112,12 +127,12 @@ div#profile-form form {
 }
 
 div#pokedex {
-  background-color:bisque;
+  /* background-color:bisque; */
 }
 
 div.dex-search {
   display:flex;
-  justify-content: center;
+  justify-content: space-around;
   padding: 10px 0px;
 }
 
@@ -128,6 +143,10 @@ div.dex-search input{
   height: 1.5em;
   font-size: 1.2em;
   font-family: 'Press Start 2P', cursive;
+}
+
+div.dex-search span {
+  margin: auto;
 }
 
 div.dex-card-list {
@@ -211,15 +230,15 @@ div.game {
   flex-direction: column;
   justify-content: center;
   padding: 0px 10px;
-  background-color: #e8dac6;
+  /* background-color: #e8dac6; */
   max-height: 85%;
+  max-width: 600px;
+  margin: auto;
 }
 
 div#game-control {
   display:flex;
   justify-content: center;
-  max-width: 600px;
-  margin: auto;
 }
 
 div#game-control select {
@@ -238,6 +257,7 @@ div#game-section {
 div#game-matches {
   display: flex;
   flex-wrap: wrap;
+  max-width: 600px;
 }
 
 div.game-card {
@@ -294,4 +314,66 @@ img.uncaught {
 
 span.right {
   float:right;
+}
+
+.switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  margin: 0px 35px 0px 0px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }

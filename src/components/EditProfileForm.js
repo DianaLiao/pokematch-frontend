@@ -3,9 +3,9 @@ import {useState} from "react"
 
 function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
 
-  const {name, email, companionId, userPokemons} = user
+  const {name, email, companionId, companionName, motto, userPokemons} = user
 
-  const [formData, setFormData] = useState({name, email, companionId})
+  const [formData, setFormData] = useState({name, email, companionId, companionName, motto})
 
   console.log(formData)
 
@@ -32,10 +32,12 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
   return (
     <div id="profile-form">
       <form autoComplete="off" onSubmit={handleFormSubmit}>
-        <label htmlFor="name">Name (also seen on leaderboards):</label>
+        <label htmlFor="name">Name (also on leaderboards):</label>
         <input onChange={handleFormChange} value={formData.name} type="text" id="name"></input><br/>
         <label htmlFor="email">E-mail address (for login):</label>
         <input onChange={handleFormChange} value={formData.email} type="email" id="email"></input><br/>
+        <label htmlFor="motto">Motto:</label>
+        <input onChange={handleFormChange} value={formData.motto} type="text" id="motto"></input><br/>
         {/* <label htmlFor="password">Password:</label>
         <input onChange={handleFormChange} value={formData.password} type="password" id="password"></input><br/> */}
         {numberOfCaughtMon > 0 ? 
@@ -45,6 +47,8 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors}) {
               {companionIdOptions}
             </select>
             <img src={formData.companionId ? caughtMon.find(entry => entry.pokemonId == formData.companionId).pokemonPic : "../blank_pokeball.png"} height="96px" width="96px"/>
+            <label htmlFor="companionName">Name your companion:</label>
+            <input onChange={handleFormChange} value={formData.companionName} type="text" id="companionName"></input><br/>
           </> 
           : "No pokémon caught yet!"
         }<br/>

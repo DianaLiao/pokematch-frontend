@@ -13,6 +13,7 @@ function Pokedex ({userMon, appRef}){
   const dexEl = useRef(null)
 
   const [searchText, setSearchText] = useState("")
+  const [toggleUnknowns, setToggle] = useState(false)
 
   const pokeBallImg = "../color-pokeball.png"
   // "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
@@ -58,9 +59,17 @@ function Pokedex ({userMon, appRef}){
     setSearchText(event.target.value)
   }
 
+
   const filteredDexCards = dexCards.filter(card => {
-    // debugger
-    return card.props.name.includes(searchText.toLowerCase()) 
+    if (toggleUnknowns) {
+      return (
+        card.props.name.includes(searchText.toLowerCase())
+        && card.props.name !== "unknown"
+        )
+    }
+    else {
+      return card.props.name.includes(searchText.toLowerCase())
+    }
     // && card.props.name !== "unknown"
   })
 
@@ -72,6 +81,14 @@ function Pokedex ({userMon, appRef}){
           placeholder="Search by name..." 
           onChange={handleSearchText}>
         </input>
+        <span>Remove unknown? </span>
+        <label class="switch">
+          <input type="checkbox" 
+            checked={toggleUnknowns} 
+            onChange={()=>(setToggle(v => !v))}>
+          </input>
+          <span class="slider round"></span>
+        </label>
       </div>
       {!dexLoaded && <p>Loading Pokédex</p> }
       <PokeInfoModal infoOpen={infoOpen} toggleModal={toggleModal} dexRef={dexEl} pokemon={modalProps}/>

@@ -70,7 +70,6 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
 
   return (
     <div className="game">
-      <h5>Choose!</h5>
       <div id="game-control">
         <label htmlFor="difficulty"></label>
         <select id="difficulty" onChange={setDifficultySetting}>

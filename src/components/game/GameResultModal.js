@@ -1,6 +1,11 @@
 import ReactDOM from "react-dom";
+import {useState} from "react"
 
 function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult}){
+
+  const [isLoaded, setLoaded] = useState(false)
+
+  setTimeout(() => setLoaded(true), 1500)
 
   console.log("newMatches", newMatches)
   const newCatches = newMatches.filter(match => match.newCatch)
@@ -21,6 +26,8 @@ function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult
     setIsNewResult(false)
   }
 
+  const loadingBall = <div className="loading">loading</div>
+
   const gameResult = (newCatches.length === 0) ?
       <p>Sorry, no catches this time!</p> :
       <div className="catch-container">
@@ -30,7 +37,7 @@ function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult
 
   return ReactDOM.createPortal(
     <div className="game-result-modal" onClick={closePopUp}>
-      {gameResult}
+      {isLoaded ? gameResult : loadingBall}
     </div>,
     document.body
   )

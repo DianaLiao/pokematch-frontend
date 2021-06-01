@@ -45,7 +45,7 @@ function App() {
   
   function login(formData){
     const fetchObj = createFetchObj("POST", formData)
-
+    console.log(formData)
     fetch(`${serverUrl}/users/login`, fetchObj)
       .then(resp=>resp.json())
       .then(resp => {
@@ -62,6 +62,7 @@ function App() {
 
   function logout(){
     setCurrentUser({})
+    setErrors([])
   }
 
   function updateUser(formData){
@@ -110,7 +111,8 @@ function App() {
       })
     // history.push("/pokedex")
 
-    setTimeout(()=>setIsNewResult(true), 1500)
+    // setTimeout(()=>setIsNewResult(true), 1500)
+    setIsNewResult(true)
   }
 
 

@@ -6,7 +6,15 @@ function Welcome({user, serverUrl, updateUser, errors, setErrors}){
 
   const [topTen, setTopTen] = useState([])
   const [showUpdateForm, setFormShow] = useState(false)
-  const {name, email, companion, totalScore} = user
+  const {
+      name, 
+      email, 
+      motto,
+      companionName,
+      companion, 
+      totalScore, 
+      pokedexCompletion
+    } = user
 
   useEffect(() => {
     fetch(`${serverUrl}/users/top_ten`).then(resp => resp.json())
@@ -31,12 +39,21 @@ function Welcome({user, serverUrl, updateUser, errors, setErrors}){
   return (
     <div className="welcome">
       <div className="welcome-one">
-        <h5>Welcome, {name}!</h5>
+        <h2><em>TRAINER PROFILE</em></h2>
+        <div><b>Name:</b> {name}</div>
+        <div><b>Total score:</b> {totalScore}</div>
+        <div><b>Pokedex Completion:</b> {pokedexCompletion}</div>
+        <div><b>Motto:</b> {motto}</div>
+        <div>
+          <b>Companion Info:</b><br/>
         {companion ? 
-          <><img src={companion.front_sprite} alt={companion.name} height="96px" width="96px"/>
-          <h5><span className="capitalize">{companion.name}</span> says hi!</h5></> 
+          <><img src={companion.front_sprite} alt={companion.name} height="200px" width="200px"/>
+          <h5><b>Nickname:</b> {companionName} <br/>
+          <b>Species:</b> <span className="capitalize">{companion.name}</span></h5></> 
           : "No companion set! Go catch a pokémon!"}<br/>
-          <div>Total score: {totalScore}</div>
+          
+        </div>
+
          <button onClick={handleFormToggle}>{showUpdateForm ? "Close" : "Open"} Profile edit form</button>
         {showUpdateForm ? <EditProfileForm user={user} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors} /> : null}
       </div>
