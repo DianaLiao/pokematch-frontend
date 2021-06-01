@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import Select from 'react-select'
+// import Select from 'react-select'
 
 import MatchList from "./game/MatchList";
 import PowerUpList from "./game/PowerUpList";
@@ -60,13 +60,21 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
   })
 
   function handleSubmit(){
-    submitMatches(matchedMon, currentDifficulty.bonus)
+    let bonus = 0
+    if (matchedMon.length*2 === currentDifficulty.numCards){
+      bonus=currentDifficulty.bonus
+    }
+
+    submitMatches(matchedMon, bonus)
     stopGame()
     setMatchedMon([])
   }
 
   return (
     <div className="game">
+      {/* <PowerUpList /> */}
+      <GameSection serverUrl={serverUrl}/> 
+      <GameTimer submitMatches={submitMatches}/>
       <div id="game-control">
         <label htmlFor="difficulty"></label>
         <select id="difficulty" onChange={setDifficultySetting}>
@@ -76,9 +84,6 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
         <button onClick={startGame}>start</button>
         <button onClick={stopGame}>stop</button>
       </div>
-      {/* <PowerUpList /> */}
-      <GameSection isGameRunning={isGameRunning} serverUrl={serverUrl}/> 
-      <GameTimer submitMatches={submitMatches}/>
       <MatchList /> <br/>
       <button onClick={handleSubmit}>Submit Matches</button>
       

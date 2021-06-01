@@ -3,10 +3,10 @@ import {GameContext} from "../GameContext"
 import GameCard from "./GameCard";
 import GameTimer from "./GameTimer";
 
-function GameSection({serverUrl, isGameRunning}){
+function GameSection({serverUrl}){
 
   const [gameMon, setGameMon] = useState([]) 
-  const {currentDifficulty} = useContext(GameContext)
+  const {currentDifficulty, isGameRunning} = useContext(GameContext)
   const fetchUrl = `${serverUrl}/pokemons/game`
   
   useEffect(() => {
@@ -18,11 +18,13 @@ function GameSection({serverUrl, isGameRunning}){
     return <GameCard {...mon} key={mon.cardId} />
   })
 
-  const stoppedGameMsg = <span>Ready to start a new game!</span>
+  const stoppedGameMsg = <div id="stopped-msg">Ready to start a new game!</div>
 
   return (
     <div id="game-section">
-      {isGameRunning ? gameCards : stoppedGameMsg}
+      <div id="game-screen">
+        {isGameRunning ? gameCards : stoppedGameMsg}
+      </div>
     </div>
   )
 

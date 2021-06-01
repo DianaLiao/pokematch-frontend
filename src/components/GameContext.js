@@ -57,11 +57,16 @@ function GameProvider({children}) {
   }
 
   function startGame(){
-    setIsGameRunning(true)
-    setFlippedCards([])
-    setLastClicked({})
-    // setMatchedMon([])
-    setTimeRemaining(currentDifficulty.timeLimit)
+    if (matchedMon.length !== 0) {
+      alert("Please submit matches first.")
+    }
+    else {
+      setIsGameRunning(true)
+      setFlippedCards([])
+      setLastClicked({})
+      // setMatchedMon([])
+      setTimeRemaining(currentDifficulty.timeLimit)
+    }
   }
 
   function stopGame(){

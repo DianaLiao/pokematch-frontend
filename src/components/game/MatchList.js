@@ -10,9 +10,11 @@ function MatchList(){
   })
 
   return (
-    <div id="game-matches">
-      You've matched:
-      {matchedImages}
+    <div id="match-box">
+        You've matched:
+      <div id="game-matches">
+        {matchedImages}
+      </div>
     </div>
   )
 }
