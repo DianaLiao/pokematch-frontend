@@ -49,7 +49,7 @@ function Login({login, signup, errors, setErrors}){
       {/* <div><span id="Login" onClick={changeFormType}>Login</span><span id="Sign-up" onClick={changeFormType}>Sign-Up</span></div> */}
       {errorsList}
       <div className="form-display">
-        <Form onSubmit={handleFormSubmit}>
+        <Form onSubmit={handleFormSubmit} autocomplete="off">
           <Form.Group>
             <Form.Label htmlFor="email">E-mail address:</Form.Label>
             <Form.Control 

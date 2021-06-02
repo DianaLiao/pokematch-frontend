@@ -82,13 +82,13 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
           {difficultyOptions}
         </select>
         {/* <Select myFontSize="20px" options={selectOptions} /> */}
-        <div className="control-button start" onClick={startGame}>Start</div>
-        <div className="control-button stop" onClick={stopGame}>Stop</div>
+        <div className="control-button start" role="button" onClick={startGame}>Start</div>
+        <div className="control-button stop" role="button" onClick={stopGame}>Stop</div>
       </div>
       </div>
       <div className="game-two">
-      <MatchList /> <br/>
-      <button onClick={handleSubmit}>Submit Matches</button>
+      <MatchList />
+      <button onClick={handleSubmit}><span className="catch">Try and catch 'em!</span><span className="match">Submit Matches</span></button>
       </div>
       
       {isNewResult ? 

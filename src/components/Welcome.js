@@ -24,7 +24,7 @@ function Welcome({user, serverUrl, updateUser, errors, setErrors}){
   const leaderRows = topTen.map(player => {
     return(
       <tr key={player.id} className={player.id === user.id ? "self" : ""}>
-        <td><img src={player.companion.front_sprite} height="25px"/>{player.name}</td>
+        <td><img src={player.companion.front_sprite} height="30px"/>{player.name}</td>
         <td>{player.pokedexCompletion}</td>
         <td>{player.totalScore}</td>
       </tr>
@@ -38,27 +38,38 @@ function Welcome({user, serverUrl, updateUser, errors, setErrors}){
 
   return (
     <div className="welcome">
+      {showUpdateForm ? <EditProfileForm user={user} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors} setFormShow={setFormShow}/> : null}
       <div className="welcome-one">
-        <h2><em>TRAINER PROFILE</em></h2>
-        <div><b>Name:</b> {name}</div>
-        <div><b>Total score:</b> {totalScore}</div>
-        <div><b>Pokedex Completion:</b> {pokedexCompletion}</div>
-        <div><b>Motto:</b> {motto}</div>
-        <div>
-          <b>Companion Info:</b><br/>
-        {companion ? 
-          <><img src={companion.front_sprite} alt={companion.name} height="200px" width="200px"/>
-          <h5><b>Nickname:</b> {companionName} <br/>
-          <b>Species:</b> <span className="capitalize">{companion.name}</span></h5></> 
-          : "No companion set! Go catch a pokémon!"}<br/>
+        <div id="trainer-profile">
+          <em><b><h3>TRAINER PROFILE</h3></b></em>
+          <div><b>Name:</b> {name}</div>
+          <div><b>Total score:</b> {totalScore}</div>
+          <div><b>Pokedex Completion:</b> {pokedexCompletion}</div>
+          <div><b>Motto:</b> {motto}</div>
+          <div>
+            <b>Companion Info:</b><br/>
+          </div>
+          <div className="companion-box">
+          {companion ? 
+            <>
+              <img src={companion.front_sprite} alt={companion.name} height="150px" width="150px"/>
+              <div className="info">
+                <b>Nickname:</b> {companionName} <br/>
+                <b>Species:</b> <span className="capitalize">{companion.name}</span>
+              </div>
+            </>
+
+              : "No companion set! Go catch a pokémon!"}
+          </div>
+          <button onClick={handleFormToggle}>{showUpdateForm ? "Close" : "Open"} Profile edit form</button>
           
         </div>
-
-         <button onClick={handleFormToggle}>{showUpdateForm ? "Close" : "Open"} Profile edit form</button>
       </div>
-      {showUpdateForm ? <EditProfileForm user={user} serverUrl={serverUrl} updateUser={updateUser} errors={errors} setErrors={setErrors} setFormShow={setFormShow}/> : null}
+      
       <div className="welcome-two">
-        <table>
+        <img className="welcome-bg" src="../poke_trophy.png" />
+        <div className="table-title">Top Ten Trainers</div>
+        <table id="top-ten">
           <thead>
             <tr>
               <th>Name</th>

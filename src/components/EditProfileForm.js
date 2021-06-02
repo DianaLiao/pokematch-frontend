@@ -22,6 +22,8 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors, setFor
   const errorsList = errors.length > 0 ? <ul>{errors.map(error => <li>{error}</li>)}</ul> : null
 
   const caughtMon = user.userPokemons.filter(entry => entry.timesCaught > 0)
+    .sort((a,b) => a.pokemonName.localeCompare(b.pokemonName))
+
   const numberOfCaughtMon = caughtMon.length
 
   const companionIdOptions = caughtMon.map(entry => {
@@ -31,7 +33,7 @@ function EditProfileForm({user, serverUrl, updateUser, errors, setErrors, setFor
 
   // debugger
   return (
-    <div className="welcome-one" id="profile-form">
+    <div className="welcome-zero" id="profile-form">
       <form autoComplete="off" onSubmit={handleFormSubmit}>
         <label htmlFor="name">Name (also on leaderboards):</label>
         <input onChange={handleFormChange} value={formData.name} type="text" id="name"></input><br/>

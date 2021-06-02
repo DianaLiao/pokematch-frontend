@@ -43,7 +43,7 @@ function Pokedex ({userMon, appRef}){
         return <PokedexCard popUpInfo={popUpInfo} key={pokemon.apiId} {...pokemon} {...userMonInfo}/>
       }
       else {
-        return <PokedexCard key={pokemon.apiId} frontSprite={pokeBallImg} backSprite={pokeBallImg} timesCaught="-1" name="unknown"/>
+        return <PokedexCard key={pokemon.apiId} frontSprite={pokeBallImg} backSprite={pokeBallImg} timesCaught="-1" name={pokemon.name}/>
       }
     })
 
@@ -61,10 +61,11 @@ function Pokedex ({userMon, appRef}){
 
 
   const filteredDexCards = dexCards.filter(card => {
+
     if (toggleUnknowns) {
       return (
         card.props.name.includes(searchText.toLowerCase())
-        && card.props.name !== "unknown"
+        && card.props.timesMatched >= 1
         )
     }
     else {
@@ -77,17 +78,18 @@ function Pokedex ({userMon, appRef}){
     <div id="pokedex" ref={dexEl}>
       <div className="dex-search">
         <input type="text" id="name-search" 
+          autocomplete="off"
           value={searchText} 
           placeholder="Search by name..." 
           onChange={handleSearchText}>
         </input>
-        <span>Remove unknown? </span>
-        <label class="switch">
+        <span>Remove unknowns?</span>
+        <label className="switch">
           <input type="checkbox" 
             checked={toggleUnknowns} 
             onChange={()=>(setToggle(v => !v))}>
           </input>
-          <span class="slider round"></span>
+          <span className="slider round"></span>
         </label>
       </div>
       {!dexLoaded && <p>Loading Pokédex</p> }

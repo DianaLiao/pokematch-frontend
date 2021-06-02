@@ -5,11 +5,9 @@ function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult
 
   const [isLoaded, setLoaded] = useState(false)
 
-  setTimeout(() => setLoaded(true), 1500)
+  setTimeout(() => setLoaded(true), 2000)
 
-  console.log("newMatches", newMatches)
   const newCatches = newMatches.filter(match => match.newCatch)
-  console.log("newCatches", newCatches)
 
   const newCatchPics = newCatches.map(entry => {
     const isFirstTime = entry.timesCaught === 1
@@ -34,9 +32,9 @@ function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult
     </div>
 
   const gameResult = (newCatches.length === 0) ?
-      <p>Sorry, no catches this time!</p> :
+      <div>Sorry, no catches this time!</div> :
       <div className="catch-container">
-          You've caught:
+          Congrats! you've caught:
           {newCatchPics}
       </div>
 
