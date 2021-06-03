@@ -24,7 +24,7 @@ function Welcome({user, serverUrl, updateUser, errors, setErrors}){
   const leaderRows = topTen.map(player => {
     return(
       <tr key={player.id} className={player.id === user.id ? "self" : ""}>
-        <td><img src={player.companion.front_sprite} height="30px"/>{player.name}</td>
+        <td><img src={player.companion ? player.companion.front_sprite : "../blank_pokeball.png"} height="30px"/>{player.name}</td>
         <td>{player.pokedexCompletion}</td>
         <td>{player.totalScore}</td>
       </tr>

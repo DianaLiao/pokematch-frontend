@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react"
-// import Select from 'react-select'
 
 import MatchList from "./game/MatchList";
 import PowerUpList from "./game/PowerUpList";
@@ -12,9 +11,6 @@ import GameTimer from "./game/GameTimer";
 
 
 function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNewResult, newMatches}){
-
-  // const fetchUrl = `${serverUrl}/pokemons/game`
-  // const [gameMon, setGameMon] = useState([]) 
   
   const {matchedMon, 
       setMatchedMon,
@@ -41,22 +37,8 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
     
   }
 
-  // useEffect(() => {
-  //   fetch(`${fetchUrl}/${currentDifficulty.numCards}`).then(resp => resp.json())
-  //     .then(setGameMon)
-  // },[fetchUrl, currentDifficulty])
-
-  // const gameCards = gameMon.map(mon => {
-  //   return <GameCard {...mon} key={mon.cardId} />
-  // })
-
   const difficultyOptions = diffArray.map(diff => {
     return <option key={diff.name} value={diff.name}>{diff.name} - {diff.numCards} cards, {diff.timeLimit}s, completion bonus: {diff.bonus} pts</option>
-  })
-
-  const selectOptions = diffArray.map(diff => {
-    return {value: `${diff.name} - ${diff.numCards} cards, ${diff.timeLimit} secs, completion bonus: ${diff.bonus} points`, 
-    label: diff.name, color: "#3b4cca"}
   })
 
   function handleSubmit(){
@@ -81,7 +63,6 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
         <select id="difficulty" onChange={setDifficultySetting}>
           {difficultyOptions}
         </select>
-        {/* <Select myFontSize="20px" options={selectOptions} /> */}
         <div className="control-button start" role="button" onClick={startGame}>Start</div>
         <div className="control-button stop" role="button" onClick={stopGame}>Stop</div>
       </div>

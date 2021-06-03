@@ -24,6 +24,8 @@ body {
   --screen: #bdb8b8;
   --pokered: #cc0000;
   --pokeblue: #3b4cca;
+  --darkgrey: rgb(102, 101, 101);
+  --pokeyellow: #ffde00;
 }
 
 code {
@@ -140,6 +142,39 @@ div.forms-page {
   margin: 0 auto;
 }
 
+.form-display form{
+  background-color: var(--pokeyellow);
+  padding: 10px;
+  border-radius: 0px 0px 10px 10px ;
+  border-bottom: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  /* border-top: 2px solid black; */
+}
+
+.forms-page .nav-link {
+  border: none;
+  border-bottom: 2px solid black;
+}
+.forms-page .nav-link.active {
+  border: none;
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  background-color: var(--pokeyellow);
+}
+
+
+
+.form-group {
+  margin-top: 1rem;
+}
+
+.btn-primary {
+  background-color: var(--pokeblue);
+  border: none;
+}
+
 div.welcome {
   display: flex;
   flex-wrap: wrap;
@@ -155,7 +190,7 @@ div.welcome-one , div.welcome-zero{
   flex-direction: column;
   align-content: center;
   /* background-color: rgb(209, 207, 207); */
-  background-image: linear-gradient(to bottom right, #ececec, #808080);
+  background-image: linear-gradient(to bottom right, #ececec, #a3a2a2);
   margin: 10px 0px;
   padding: 10px;
   border-radius: 5px;
@@ -186,7 +221,7 @@ div.companion-box {
 }
 
 div.companion-box img {
-  background-color: #c1e89a;
+  background-color: var(--greenscreen);
   margin: 15px 15px 20px 15px;
 }
 
@@ -208,7 +243,7 @@ div.welcome-one button {
 div.welcome-two {
   overflow: auto;
   margin: 10px 0px;
-  background-image: linear-gradient(to bottom right, #ececec, #808080);
+  background-image: linear-gradient(to bottom right, #ececec, #a3a2a2);
   border: 2px solid black;
   border-radius: 5px;
   padding: 10px;
@@ -217,7 +252,7 @@ div.welcome-two {
 
 img.welcome-bg {
   overflow: hidden;
-  opacity: 0.3;
+  opacity: 0.2;
   position: absolute;
   left: 0;
   top: 0;
@@ -267,6 +302,17 @@ div#profile-form input[type=text],
 div#profile-form select,
 div#profile-form input[type=email]{
   border: 2px solid black;
+}
+
+div#profile-form input[type=submit]{
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+}
+
+div#profile-form input[type=submit]:hover, div.welcome button:hover {
+  background-color: var(--darkgrey);
+  color: white;
 }
 
 div#pokedex {
@@ -489,7 +535,8 @@ div.game-two button {
 }
 
 div.game-two button:hover {
-  background-color: grey;
+  background-color: var(--darkgrey);
+  color: white;
 }
 
 div.game-two button .catch {
@@ -556,7 +603,7 @@ div.game-result-modal .first {
 
 div#game-timer {
   text-align: center;
-  font-size: 7em;
+  font-size: 6em;
 }
 
 div.hidden {
@@ -632,3 +679,4 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
+

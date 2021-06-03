@@ -49,12 +49,38 @@ function Login({login, signup, errors, setErrors}){
       {/* <div><span id="Login" onClick={changeFormType}>Login</span><span id="Sign-up" onClick={changeFormType}>Sign-Up</span></div> */}
       {errorsList}
       <div className="form-display">
+      {/* <form onSubmit={handleFormSubmit} autocomplete="off">
+          <label htmlFor="email">E-mail address:</label>
+          <input 
+            onChange={handleFormChange} 
+            value={formData.email}
+            type="email" id="email">
+          </input><br/>
+          <label htmlFor="password">Password:</label>
+          <input 
+            onChange={handleFormChange} 
+            value={formData.password}
+            type="password" id="password">
+          </input><br/>
+          {formType === "Sign-up" && 
+            <>
+              <label htmlFor="name">Name:</label>
+              <input 
+                onChange={handleFormChange} 
+                value={formData.name}
+                type="text" id="name">
+              </input>
+              <br/>
+            </>}
+          <input type="submit" value={formType}></input>
+        </form> */}
         <Form onSubmit={handleFormSubmit} autocomplete="off">
           <Form.Group>
             <Form.Label htmlFor="email">E-mail address:</Form.Label>
             <Form.Control 
               onChange={handleFormChange} 
               value={formData.email}
+              placeholder="Enter e-mail..."
               type="email" id="email">
             </Form.Control><br/>
           </Form.Group>
@@ -63,6 +89,7 @@ function Login({login, signup, errors, setErrors}){
             <Form.Control 
               onChange={handleFormChange} 
               value={formData.password}
+              placeholder="Enter password..."
               type="password" id="password">
             </Form.Control><br/>
             </Form.Group>
@@ -72,6 +99,7 @@ function Login({login, signup, errors, setErrors}){
                 <Form.Control 
                   onChange={handleFormChange} 
                   value={formData.name}
+                  placeholder="Enter name..."
                   type="text" id="name">
                 </Form.Control>
                 <br/>
