@@ -7,7 +7,7 @@ import Nav from "react-bootstrap/Nav"
 function Login({login, signup, errors, setErrors}){
 
   const [formData, setFormData] = useState({name:"", password:"", email:""})
-  const [formType, setFormType] = useState("Sign-up")
+  const [formType, setFormType] = useState("Login")
 
   const history = useHistory()
 
@@ -38,7 +38,7 @@ function Login({login, signup, errors, setErrors}){
 
   return (
     <div className="forms-page">
-      <Nav fill variant="tabs" className="justify-content-center">
+      <Nav fill variant="tabs" className="justify-content-center" activeKey={formType}>
         <Nav.Item>
           <Nav.Link id="Login" eventKey="Login" onClick={changeFormType}>Login</Nav.Link>
         </Nav.Item>
@@ -74,7 +74,7 @@ function Login({login, signup, errors, setErrors}){
             </>}
           <input type="submit" value={formType}></input>
         </form> */}
-        <Form onSubmit={handleFormSubmit} autocomplete="off">
+        <Form onSubmit={handleFormSubmit} autoComplete="off">
           <Form.Group>
             <Form.Label htmlFor="email">E-mail address:</Form.Label>
             <Form.Control 

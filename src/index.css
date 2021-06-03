@@ -155,6 +155,8 @@ div.forms-page {
 .forms-page .nav-link {
   border: none;
   border-bottom: 2px solid black;
+  font-family: 'Press Start 2P', monospace;
+  color: var(--pokeblue)
 }
 .forms-page .nav-link.active {
   border: none;
@@ -163,8 +165,6 @@ div.forms-page {
   border-right: 2px solid black;
   background-color: var(--pokeyellow);
 }
-
-
 
 .form-group {
   margin-top: 1rem;
@@ -199,7 +199,7 @@ div.welcome-one , div.welcome-zero{
 }
 
 div.welcome-one em, div.welcome-one b {
-  font-family: 'Press Start 2P', cursive, monospace;
+  font-family: 'Press Start 2P', monospace;
 }
 
 div#trainer-profile {
@@ -213,7 +213,7 @@ div#trainer-profile {
 div.companion-box {
   display: flex;
   border: 2px solid black;
-  background-color: var(--screen);
+  background-color: white;
   border-radius: 2px 2px 2px 2px;
   /* margin: 0px 10px 0px 0px; */
   margin: auto;
@@ -311,7 +311,7 @@ div#profile-form input[type=submit]{
 }
 
 div#profile-form input[type=submit]:hover, div.welcome button:hover {
-  background-color: var(--darkgrey);
+  background-color: var(--pokeblue);
   color: white;
 }
 
@@ -535,7 +535,7 @@ div.game-two button {
 }
 
 div.game-two button:hover {
-  background-color: var(--darkgrey);
+  background-color: var(--pokeblue);
   color: white;
 }
 
