@@ -1,6 +1,6 @@
 # Pokématch 'em All
 
-This is a memory matching card game with a Pokémon theme. After matching the cards, you will have a chance to "catch" them, and you can access information about them in the Pokédex. This was my phase 5 project for Flatiron School.
+This is a memory matching card game with a Pokémon theme. After matching the cards, you will have a chance to "catch" them, and you can access information about them in the Pokédex. This was my phase 5 project for Flatiron School. Watch the [presentation demo](https://www.youtube.com/watch?v=76T--Kxscak). It is best run on a desktop computer with a screen at least 800 pixels wide.
 
 ## Installation
 
