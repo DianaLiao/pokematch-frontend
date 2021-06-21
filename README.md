@@ -13,6 +13,8 @@ This is a memory matching card game with a Pokémon theme. After matching the ca
 
 Create a user account or login with an existing email in the database. 
 
+You may change your user info on the welcome screen. You may choose your "companion Pokémon" which will appear next to your name on the leaderboards. Your options will be limited to Pokémon you have "caught" in the game.
+
 To play a game, set a difficulty in the dropdown and click on "Start". Flip cards and attempt to match two of the same Pokémon. If you complete all matches within the time alloted, you will be awarded bonus points. To submit the results of the game, click on the "Submit" button.
 
 ## Troubleshooting & Notes
