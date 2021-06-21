@@ -109,9 +109,7 @@ function App() {
       .then(updatedUser => {
         setCurrentUser(updatedUser)
       })
-    // history.push("/pokedex")
-
-    // setTimeout(()=>setIsNewResult(true), 1500)
+      
     setIsNewResult(true)
   }
 

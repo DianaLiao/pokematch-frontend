@@ -16,6 +16,7 @@ function Pokedex ({userMon, appRef}){
   const [toggleUnknowns, setToggle] = useState(false)
 
   const pokeBallImg = "../color-pokeball.png"
+  // other options:
   // "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
   // "../blank_pokeball.png"
 
