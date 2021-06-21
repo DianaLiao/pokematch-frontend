@@ -19,7 +19,7 @@ To play a game, set a difficulty in the dropdown and click on "Start". Flip card
 
 ## Troubleshooting & Notes
 
-If the frontend doesn't seem to be connected to the backend, make sure that the `serverUrl` in `App.js` is configured correctly. 
+If the frontend doesn't seem to be connected to the backend, make sure that the `serverUrl` in `App.js` is configured correctly to match the URL of the Rails server from the backend. 
 
 As of this writing, there is no functionality to reset your password. (Sorry!)
 
