@@ -14,6 +14,7 @@ import NewGame from "./components/NewGame"
 import Pokedex from "./components/Pokedex"
 import { GameProvider } from "./components/GameContext"
 import { findRenderedDOMComponentWithClass } from 'react-dom/test-utils';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -173,6 +174,7 @@ function App() {
             </Route>
           </Switch>
       </main>
+      <Footer />
     </div>
 
   );

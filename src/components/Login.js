@@ -38,6 +38,7 @@ function Login({login, signup, errors, setErrors}){
 
   return (
     <div className="forms-page">
+      {errorsList}
       <Nav fill variant="tabs" className="justify-content-center" activeKey={formType}>
         <Nav.Item>
           <Nav.Link id="Login" eventKey="Login" onClick={changeFormType}>Login</Nav.Link>
@@ -47,7 +48,6 @@ function Login({login, signup, errors, setErrors}){
         </Nav.Item>
       </Nav>
       {/* <div><span id="Login" onClick={changeFormType}>Login</span><span id="Sign-up" onClick={changeFormType}>Sign-Up</span></div> */}
-      {errorsList}
       <div className="form-display">
       {/* <form onSubmit={handleFormSubmit} autocomplete="off">
           <label htmlFor="email">E-mail address:</label>

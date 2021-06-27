@@ -32,6 +32,7 @@ function NewGame({serverUrl, submitMatches, setNewMatches, isNewResult, setIsNew
   }, [])
   
   function setDifficultySetting({target}){
+    stopGame()
     const settingName = (target.value)
     setDifficulty(diffArray.find(diff => diff.name === settingName))
     

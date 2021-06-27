@@ -81,11 +81,11 @@ function GameProvider({children}) {
       bonus
     }
   }
-  const easyDiff = createDifficulty("Easy", 8, 30, 0)
-  const mediumDiff = createDifficulty("Medium", 14, 60, 25)
-  const hardDiff = createDifficulty("Hard", 20, 90, 50)
-  const testDiff = createDifficulty("testing", 2, 10, 0)
-  const diffArray = [easyDiff,mediumDiff,hardDiff, testDiff]
+  const easyDiff = createDifficulty("Easy", 8, 30, 10)
+  const mediumDiff = createDifficulty("Medium", 16, 45, 25)
+  const hardDiff = createDifficulty("Hard", 24, 60, 75)
+  // const testDiff = createDifficulty("testing", 2, 10, 0)
+  const diffArray = [easyDiff,mediumDiff,hardDiff]
 
 
   const value = {

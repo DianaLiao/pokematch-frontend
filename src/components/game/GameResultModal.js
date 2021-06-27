@@ -35,7 +35,8 @@ function GameResultModal({setNewMatches, newMatches, isNewResult, setIsNewResult
       <div>Sorry, no catches this time!</div> :
       <div className="catch-container">
           Congrats! you've caught:
-          {newCatchPics}
+          {newCatchPics}<br/>
+          (Click to close)
       </div>
 
   return ReactDOM.createPortal(

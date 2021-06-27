@@ -43,7 +43,7 @@ code {
   font-style: normal;
 }
 
-main {
+main, footer {
   padding: 10px;
   font-family: monospace;
 }
@@ -585,12 +585,13 @@ div.game-result-modal {
   border-radius: 5px;
   width: fit-content;
   min-width: 150px;
+  max-width: 65%;
+  max-height: 600px;
   position: fixed;
   /* top: 5%;
   left: 30%; */
   transform: translate(-50%, -50%);
   transition: all 5s ease-in-out;
-  max-width: 65%;
   left: 50%;
   top: 50%;
   font-family: monospace;
@@ -599,6 +600,12 @@ div.game-result-modal {
 div.game-result-modal .first {
   color: var(--pokered);
   font-weight: bold;
+}
+
+.game-result-modal .catch-container{
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
 }
 
 div#game-timer {
@@ -680,3 +687,16 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
+footer {
+  text-align: center;
+}
+
+footer img {
+  height: 1.25em;
+  margin: 5px
+}
+
+footer .social{
+  display: flex;
+  justify-content: center;
+}
